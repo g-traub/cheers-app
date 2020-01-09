@@ -1,25 +1,28 @@
 import React from 'react';
-import logo from './assets/logo_text.svg';
+import {
+  Switch,
+  Route
+} from "react-router-dom";
+
+import HomePage from 'pages/HomePage';
+import Map from 'pages/Map';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <div>
-          <p>Cheers will help you find the best place to share the Olympic Games’ emotions !</p>
-          <p>Go out and celebrate !</p>
-        </div>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Start
-        </a>
-      </header>
+      <header className="App-header"></header>
+      <Switch>
+        <Route path="/map">
+          <Map />
+        </Route>
+        {/* Should be last because most general route */}
+        <Route path="/">
+          <HomePage />
+        </Route>
+      </Switch>
+      <footer></footer>
     </div>
   );
 }
