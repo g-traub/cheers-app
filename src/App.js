@@ -4,10 +4,10 @@ import {
   Route
 } from "react-router-dom";
 
-import HomePage from 'pages/HomePage';
-import Map from 'pages/Map';
+import HomePage from 'pages/HomePage/HomePage';
+import Map from 'pages/Map/Map';
 
-import './App.css';
+import './App.scss';
 
 function App() {
   return (

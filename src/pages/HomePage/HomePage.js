@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+
 import logo from 'assets/logo_text.svg';
+import './HomePage.scss';
+
 
 function App() {
   return (
