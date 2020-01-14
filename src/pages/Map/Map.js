@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import MapGL, { Source, Layer } from 'react-map-gl';
 
-import { clusterLayer, clusterCountLayer } from './layers';
+import { clusterIconLayer } from './layers';
+// data
 import { geojsonData } from './data/data_2020-01-14-144409'
-
+// icons
+import happyIcon from 'assets/markers/happy.png'
+import smileIcon from 'assets/markers/smile.png'
+// map style
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 function Map() {
@@ -28,7 +32,16 @@ function Map() {
       onViewportChange={setViewport}
       mapboxApiAccessToken={TOKEN}
       mapStyle={mapStyle}
-      interactiveLayerIds={[clusterLayer.id]}
+      onLoad={(map) => {
+        map.target.loadImage(happyIcon, (error, image) => {
+          if (error) console.log(error)
+          map.target.addImage('happyIcon', image)
+        })
+        map.target.loadImage(smileIcon, (error, image) => {
+          if (error) console.log(error)
+          map.target.addImage('smileIcon', image)
+        })
+      }}
     >
       <Source
         type="geojson"
@@ -37,8 +50,7 @@ function Map() {
         clusterMaxZoom={14}
         clusterRadius={50}
       >
-        <Layer {...clusterLayer} />
-        <Layer {...clusterCountLayer} />
+        <Layer {...clusterIconLayer} />
       </Source>
     </MapGL>
 

@@ -1,12 +1,11 @@
-
-export const clusterLayer = {
-  id: 'clusters',
-  type: 'circle',
+export const clusterIconLayer = {
+  id: 'cluster',
+  type: 'symbol',
   source: 'places',
   filter: ['has', 'point_count'],
-  paint: {
-    'circle-color': ['step', ['get', 'point_count'], '#FFC107', 100, '#FFA000', 250, '#f28705'],
-    'circle-radius': ['step', ['get', 'point_count'], 15, 30, 25, 100, 35]
+  layout: {
+    'icon-image': ['step', ['get', 'point_count'], 'smileIcon', 100, 'happyIcon'],
+    'icon-size': ['step', ['get', 'point_count'], 0.25, 30, 0.35, 100, 0.5]
   }
 };
 
