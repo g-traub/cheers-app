@@ -1,7 +1,7 @@
 export const clusterIconLayer = {
   id: 'cluster',
   type: 'symbol',
-  source: 'places',
+  source: 'bar-clubs',
   filter: ['has', 'point_count'],
   layout: {
     'icon-image': ['step', ['get', 'point_count'], 'smileIcon', 100, 'happyIcon'],
@@ -12,7 +12,7 @@ export const clusterIconLayer = {
 export const clusterCountLayer = {
   id: 'cluster-count',
   type: 'symbol',
-  source: 'places',
+  source: 'bar-clubs',
   filter: ['has', 'point_count'],
   layout: {
     'text-field': '{point_count_abbreviated}',
