@@ -26,22 +26,24 @@ function Map() {
     minZoom: 11
   });
 
+  const load = (map) => {
+    map.target.loadImage(happyIcon, (error, image) => {
+      if (error) console.log(error)
+      map.target.addImage('happyIcon', image)
+    })
+    map.target.loadImage(smileIcon, (error, image) => {
+      if (error) console.log(error)
+      map.target.addImage('smileIcon', image)
+    })
+  }
+
   return (
     <MapGL
       {...viewport}
       onViewportChange={setViewport}
       mapboxApiAccessToken={TOKEN}
       mapStyle={mapStyle}
-      onLoad={(map) => {
-        map.target.loadImage(happyIcon, (error, image) => {
-          if (error) console.log(error)
-          map.target.addImage('happyIcon', image)
-        })
-        map.target.loadImage(smileIcon, (error, image) => {
-          if (error) console.log(error)
-          map.target.addImage('smileIcon', image)
-        })
-      }}
+      onLoad={load}
     >
       <Source
         type="geojson"
