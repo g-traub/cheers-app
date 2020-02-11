@@ -1,5 +1,5 @@
 
-# ![alt text](https://raw.githubusercontent.com/g-traub/cheers-app/master/public/icon-144x144.png "Cheers l") Cheers-app
+# Cheers-app
 
 ## Projet fil rouge - HETIC
 ### Link : https://cheers-app.netlify.com/
