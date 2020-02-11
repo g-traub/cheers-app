@@ -1,0 +1,129 @@
+@import 'style/colors.scss';
+.bar {
+  margin: 0 1.5rem;
+}
+.bar__heading {
+  display: flex;
+  align-items: flex-end;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+.bar__name {
+  margin: 0 .5rem 0 0;
+  font-size: 1.8rem;
+}
+.bar__address {
+  color: $darkGrey;
+  font-weight: normal;
+  margin: 1rem 0;
+}
+.bar__rating {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin: 0 auto 0 0;
+}
+.rating {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  margin: .2rem;
+  background-image: url('../../assets/logo.svg');
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.rating--empty {
+  filter: grayscale(1);
+}
+.rating--halfEmpty::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  background-color: #fff;
+  mix-blend-mode: hue;
+}
+.bar__badge {
+  font-size: .8rem;
+  background-color: $orange;
+  border-radius: .2rem;
+  padding: .3rem;
+  color: #fff;
+}
+.bar__hours {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+.hours {
+  padding: .3rem;
+  display: inline-flex;
+  align-items: center;
+  margin-right: auto;
+}
+.hours__label {
+  font-size: .8rem;
+  color: $yellow;
+}
+.hours__value {
+  font-weight: bold;
+  margin: 0 .3rem;
+}
+.hours--happyHour {
+  border: 2px solid $orange;
+  border-radius: .2rem;
+  .hours__label {
+    color: $orange;
+  }
+}
+.bar__prices {
+  margin: 1rem 0;
+}
+.prices {
+  display: flex;
+  margin: .5rem 0;
+}
+.prices__label {
+  font-weight: normal;
+  color: $grey;
+  margin: 0;
+  &::before {
+    content: url('../../assets/beer.svg');
+    margin-right: .2rem;
+  }
+}
+.price {
+  margin-right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &>* {
+    margin: 0 auto;
+  }
+}
+.price--happyHour {
+  .price__label {
+    color: $orange;
+  }
+  .price__value {
+    border-color: $orange;
+  }
+}
+.price__value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+  width: 40px;
+  height: 40px;
+  border: 3px solid $yellow;
+  border-radius: 50%;
+}
+.price__label {
+  color: $yellow;
+  font-size: .8rem;
+}
