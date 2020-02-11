@@ -1,7 +1,8 @@
 
-# ![alt text](https://raw.githubusercontent.com/g-traub/cheers-app/master/public/icon-144x144.png?token=AICF7A2XWGSQIYOONW3X4426DOJZS "Cheers l") Cheers-app
+# ![alt text](https://raw.githubusercontent.com/g-traub/cheers-app/master/public/icon-144x144.png "Cheers l") Cheers-app
 
 ## Projet fil rouge - HETIC
+### Link : https://cheers-app.netlify.com/
 ### Team :
 - Lucas Benhayoun *(Designer)*
 - Rodrigo Tapia *(Front/Backend)*
