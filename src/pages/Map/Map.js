@@ -12,7 +12,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 function Map() {
   // data
-  const MAPBOXTOKEN = 'pk.eyJ1IjoiZ3VpbGxhdW1ldHJiIiwiYSI6ImNrNWF3aDV2MzFiZjkzbnBhM3M4anIybzQifQ.A0PdDZWEzaB3UxEgocXjCw';
+  const MAPBOXTOKEN = process.env.REACT_APP_MAPBOX_TOKEN
   const mapStyle = 'mapbox://styles/guillaumetrb/ck5ayj7fu17og1cs5y26xe3vs'
 
   const apiUrl = 'https://project-cheers.herokuapp.com/api'
