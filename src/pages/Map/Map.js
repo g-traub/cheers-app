@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MapGL, { Source, Layer } from 'react-map-gl';
+import MapGL, { Source, Layer, GeolocateControl } from 'react-map-gl';
 import axios from 'axios';
 
 // layers
@@ -27,6 +27,12 @@ function Map() {
     minZoom: 11
   });
 
+  const geolocateControlStyle = {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    margin: 10
+  }
   const [data, setData] = useState(null);
 
   // effects
@@ -41,39 +47,44 @@ function Map() {
     fetchData();
   }, []);
 
-// Functions 
-const load = (map) => {
-  map.target.loadImage(happyIcon, (error, image) => {
-    if (error) console.log(error)
-    map.target.addImage('happyIcon', image)
-  })
-  map.target.loadImage(smileIcon, (error, image) => {
-    if (error) console.log(error)
-    map.target.addImage('smileIcon', image)
-  })
-};
+  // Functions 
+  const load = (map) => {
+    map.target.loadImage(happyIcon, (error, image) => {
+      if (error) console.log(error)
+      map.target.addImage('happyIcon', image)
+    })
+    map.target.loadImage(smileIcon, (error, image) => {
+      if (error) console.log(error)
+      map.target.addImage('smileIcon', image)
+    })
+  };
 
-return (
-  <MapGL
-    {...viewport}
-    onViewportChange={setViewport}
-    mapboxApiAccessToken={MAPBOXTOKEN}
-    mapStyle={mapStyle}
-    onLoad={load}
-  >
-    <Source
-      id="bars-clubs"
-      type="geojson"
-      data={data}
-      cluster={true}
-      clusterMaxZoom={14}
-      clusterRadius={50}
+  return (
+    <MapGL
+      {...viewport}
+      onViewportChange={setViewport}
+      mapboxApiAccessToken={MAPBOXTOKEN}
+      mapStyle="mapbox://styles/mapbox/dark-v9"
+      onLoad={load}
     >
-      <Layer {...clusterIconLayer} />
-    </Source>
-  </MapGL>
+      {/* <Source
+        id="bars-clubs"
+        type="geojson"
+        data={data}
+        cluster={true}
+        clusterMaxZoom={14}
+        clusterRadius={50}
+      >
+        <Layer {...clusterIconLayer} />
+      </Source> */}
+      <GeolocateControl
+        style={geolocateControlStyle}
+        positionOptions={{ enableHighAccuracy: true }}
+        trackUserLocation={true}
+      />
+    </MapGL>
 
-);
+  );
 }
 
 export default Map;
