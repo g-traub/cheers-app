@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import MapGL, { Source, Layer, GeolocateControl } from 'react-map-gl';
 import axios from 'axios';
 
+// components
+import Menu from 'components/Menu/Menu'
 // layers
 import { clusterIconLayer } from './layers';
 // icons
@@ -13,7 +15,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 function Map() {
   // data
   const MAPBOXTOKEN = process.env.REACT_APP_MAPBOX_TOKEN
-  const mapStyle = 'mapbox://styles/guillaumetrb/ck5ayj7fu17og1cs5y26xe3vs'
+  const mapStyle = 'mapbox://styles/guillaumetrb/ck6jgtsnn137j1imuq0ll8w8b'
 
   const apiUrl = 'https://project-cheers.herokuapp.com/api'
 
@@ -28,7 +30,12 @@ function Map() {
   });
 
   const geolocateControlStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     position: 'absolute',
+    width: '35px',
+    height: '35px',
     top: 0,
     right: 0,
     margin: 10
@@ -60,30 +67,32 @@ function Map() {
   };
 
   return (
-    <MapGL
-      {...viewport}
-      onViewportChange={setViewport}
-      mapboxApiAccessToken={MAPBOXTOKEN}
-      mapStyle="mapbox://styles/mapbox/dark-v9"
-      onLoad={load}
-    >
-      {/* <Source
-        id="bars-clubs"
-        type="geojson"
-        data={data}
-        cluster={true}
-        clusterMaxZoom={14}
-        clusterRadius={50}
+    <section id="Map">
+      <MapGL
+        {...viewport}
+        onViewportChange={setViewport}
+        mapboxApiAccessToken={MAPBOXTOKEN}
+        mapStyle={mapStyle}
+        onLoad={load}
       >
-        <Layer {...clusterIconLayer} />
-      </Source> */}
-      <GeolocateControl
-        style={geolocateControlStyle}
-        positionOptions={{ enableHighAccuracy: true }}
-        trackUserLocation={true}
-      />
-    </MapGL>
-
+        {/* <Source
+          id="bars-clubs"
+          type="geojson"
+          data={data}
+          cluster={true}
+          clusterMaxZoom={14}
+          clusterRadius={50}
+        >
+          <Layer {...clusterIconLayer} />
+        </Source> */}
+        <GeolocateControl
+          style={geolocateControlStyle}
+          positionOptions={{ enableHighAccuracy: true }}
+          trackUserLocation={true}
+        />
+      </MapGL>
+      <Menu />
+    </section>
   );
 }
 
