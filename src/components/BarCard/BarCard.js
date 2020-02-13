@@ -16,29 +16,41 @@ function BarCard() {
           <li className="rating rating--halfEmpty"></li>
           <li className="rating rating--empty"></li>
         </ol>
-        <span className="bar__badge">terrasse</span>
       </div>
+
       <h3 className="bar__address">48 Boulevard de Ménilmontant, 75020 Paris</h3>
-      <div className="bar__hours">
-        <div className="hours">
-          <span className="hours__label">Auj.</span>
-          <span className="hours__value">16h-02h</span>
-        </div>
-        <div className="hours hours--happyHour">
-          <span className="hours__label">Happy hour</span>
-          <span className="hours__value">16h-20h</span>
-        </div>
+
+      <div className="bar__metros">
+        <img className="metro" src={require("assets/metro/4.svg")} alt="4" />
+        <img className="metro" src={require("assets/metro/4.svg")} alt="4" />
       </div>
-      <div className="bar__prices">
-        <h4 className="prices__label">Prix pinte (50cl)</h4>
-        <div className="prices">
-          <div className="price price--happyHour">
-            <div className="price__value">5€</div>
-            <div className="price__label">happy hour</div>
+
+      <hr />
+      <div className="bar__infos">
+        <div className="info__column">
+          <div className="info info__hours">
+            <img src={require("assets/icons/Time.svg")} alt="" />
+            <p className="hours__label">opening hours</p>
+            <p className="value">16h-02h</p>
           </div>
-          <div className="price">
-            <div className="price__value">7€</div>
-            <div className="price__label">normal</div>
+          <div className="info info__price">
+            <img src={require("assets/icons/Beer.svg")} alt="" />
+            <p className="value">7€</p>
+          </div>
+          <div className="info info__terrace">
+            <img src={require("assets/icons/Terrace.svg")} alt="" />
+            <img className="check" src={require("assets/icons/check.svg")} alt="" />
+          </div>
+        </div>
+        <div className="info__column">
+          <div className="info info__hours">
+            <img src={require("assets/icons/Happyhour.svg")} alt="" />
+            <p className="hours__label">happy hour</p>
+            <p className="value value--happy">18h-20h</p>
+          </div>
+          <div className="info info__price">
+            <img src={require("assets/icons/Beer.svg")} alt="" />
+            <p className="value value--happy">5€</p>
           </div>
         </div>
       </div>
