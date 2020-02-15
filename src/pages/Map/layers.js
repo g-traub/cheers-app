@@ -1,11 +1,30 @@
-export const clusterIconLayer = {
+export const clusterCircleLayer = {
   id: 'cluster',
-  type: 'symbol',
+  type: 'circle',
   source: 'bar-clubs',
   filter: ['has', 'point_count'],
-  layout: {
-    'icon-image': ['step', ['get', 'point_count'], 'smileIcon', 100, 'happyIcon'],
-    'icon-size': ['step', ['get', 'point_count'], 0.25, 30, 0.35, 100, 0.5]
+  paint: {
+    'circle-opacity': 0.6,
+    'circle-color': '#FFE082',
+    'circle-stroke-width': 2,
+    'circle-stroke-color': '#fff',
+    'circle-radius': [
+      'step',
+      ['get', 'point_count'],
+      20,
+      20,
+      10,
+      30,
+      20,
+      40,
+      30,
+      50,
+      40,
+      60,
+      50,
+      70,
+      60
+    ]
   }
 };
 
@@ -20,4 +39,3 @@ export const clusterCountLayer = {
     'text-size': 12
   }
 };
-

@@ -4,11 +4,11 @@ import axios from 'axios';
 
 // components
 import Menu from 'components/Menu/Menu'
-// layers
-import { clusterIconLayer } from './layers';
+import BarPins from 'components/BarPins/BarPins'
 // icons
-import happyIcon from 'assets/markers/happy.png'
-import smileIcon from 'assets/markers/smile.png'
+import barPin from 'assets/icons/barPin.png'
+// layers
+import { clusterCircleLayer } from './layers';
 // map style
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -40,6 +40,7 @@ function Map() {
     right: 0,
     margin: 10
   }
+
   const [data, setData] = useState(null);
 
   // effects
@@ -50,20 +51,28 @@ function Map() {
       );
 
       setData(response.data);
+      localStorage.setItem('barsData', JSON.stringify(response.data));
     }
-    fetchData();
+
+    const localData = localStorage.getItem('barsData') || null;
+    if (localData) {
+      setData(JSON.parse(localData));
+    } else {
+      fetchData();
+    }
+
   }, []);
 
   // Functions 
   const load = (map) => {
-    map.target.loadImage(happyIcon, (error, image) => {
+    map.target.loadImage(barPin, (error, image) => {
       if (error) console.log(error)
-      map.target.addImage('happyIcon', image)
+      map.target.addImage('barPin', image)
     })
-    map.target.loadImage(smileIcon, (error, image) => {
-      if (error) console.log(error)
-      map.target.addImage('smileIcon', image)
-    })
+  };
+
+  const showBarInfos = (bar) => {
+    console.log('pin', bar)
   };
 
   return (
@@ -75,7 +84,10 @@ function Map() {
         mapStyle={mapStyle}
         onLoad={load}
       >
-        {/* <Source
+        {data &&
+          <BarPins data={data.features} onClick={showBarInfos} />}
+
+        <Source
           id="bars-clubs"
           type="geojson"
           data={data}
@@ -83,8 +95,9 @@ function Map() {
           clusterMaxZoom={14}
           clusterRadius={50}
         >
-          <Layer {...clusterIconLayer} />
-        </Source> */}
+          <Layer {...clusterCircleLayer} />
+        </Source>
+
         <GeolocateControl
           style={geolocateControlStyle}
           positionOptions={{ enableHighAccuracy: true }}
