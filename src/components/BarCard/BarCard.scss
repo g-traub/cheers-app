@@ -8,17 +8,17 @@
 .bar__heading {
   display: flex;
   align-items: flex-end;
-  margin: .5rem 0;
   flex-wrap: wrap;
 }
 .bar__name {
   margin: 0 .5rem 0 0;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 .bar__address {
   color: $darkGrey;
   font-weight: normal;
-  margin: .5rem 0;
+  font-size: .9rem;
+  margin: .3rem 0;
 }
 .bar__rating {
   list-style-type: none;
@@ -50,14 +50,15 @@
   mix-blend-mode: hue;
 }
 .metro {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   margin-right: .3rem;
 }
 .bar__infos {
   display: flex;
   text-align: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  overflow: scroll;
   img {
     display: inline-block;
     height: 25px;
@@ -73,7 +74,7 @@
   align-items: center;
 }
 .info {
-  margin: .8rem 0;
+  margin: .5rem 0;
 }
 .info__terrace{
   display: flex;

@@ -1,6 +1,8 @@
-
 import React, { useState } from 'react';
 
+//components
+import BarCard from 'components/BarCard/BarCard'
+//style 
 import './Menu.scss';
 
 function Menu() {
@@ -10,6 +12,9 @@ function Menu() {
   return (
     <section id="Menu" className={isMenuOpen ? 'isOpen' : ''}>
       <div className="menu">
+        {isMenuOpen && <div className="menu__content">
+          <BarCard />
+        </div>}
         <div className={isMenuOpen ? 'buttons buttons--bordered' : 'buttons'}>
         <div className="button">
           <div className="button__text">All</div>
