@@ -49,6 +49,12 @@
   background-color: #fff;
   mix-blend-mode: hue;
 }
+.bar__metros {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
 .metro {
   width: 20px;
   height: 20px;

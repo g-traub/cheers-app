@@ -16,19 +16,7 @@ function Map() {
   // data
   const MAPBOXTOKEN = process.env.REACT_APP_MAPBOX_TOKEN
   const mapStyle = 'mapbox://styles/guillaumetrb/ck6jgtsnn137j1imuq0ll8w8b'
-
   const apiUrl = 'https://project-cheers.herokuapp.com/api'
-
-  // state
-  const [viewport, setViewport] = useState({
-    width: '100vw',
-    height: '100vh',
-    latitude: 48.857704,
-    longitude: 2.339466,
-    zoom: 11.5,
-    minZoom: 11
-  });
-
   const geolocateControlStyle = {
     display: 'flex',
     alignItems: 'center',
@@ -41,7 +29,18 @@ function Map() {
     margin: 10
   }
 
+  // state
+  const [viewport, setViewport] = useState({
+    width: '100vw',
+    height: '100vh',
+    latitude: 48.857704,
+    longitude: 2.339466,
+    zoom: 11.5,
+    minZoom: 11
+  });
+
   const [data, setData] = useState(null);
+  const [selectedBar, setSelectedBar] = useState(null);
 
   // effects
   useEffect(() => {
@@ -72,7 +71,7 @@ function Map() {
   };
 
   const showBarInfos = (bar) => {
-    console.log('pin', bar)
+    setSelectedBar(bar)
   };
 
   return (
@@ -104,7 +103,8 @@ function Map() {
           trackUserLocation={true}
         />
       </MapGL>
-      <Menu />
+
+      <Menu selectedBar={selectedBar} />
     </section>
   );
 }

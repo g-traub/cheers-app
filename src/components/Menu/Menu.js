@@ -1,19 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 //components
 import BarCard from 'components/BarCard/BarCard'
 //style 
 import './Menu.scss';
 
-function Menu() {
+function Menu(props) {
 
   const [isMenuOpen, setisMenuOpen] = useState(false);
 
+  useEffect(() => {
+    if (props.selectedBar) {
+      setisMenuOpen(true)
+    }
+  }, [props.selectedBar])
+  
   return (
     <section id="Menu" className={isMenuOpen ? 'isOpen' : ''}>
       <div className="menu">
         {isMenuOpen && <div className="menu__content">
-          <BarCard />
+          <BarCard bar={props.selectedBar} />
         </div>}
         <div className={isMenuOpen ? 'buttons buttons--bordered' : 'buttons'}>
         <div className="button">
