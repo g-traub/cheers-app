@@ -4,14 +4,12 @@ import React from 'react';
 import BarCard from 'components/BarCard/BarCard'
 //style 
 import './Menu.scss';
-import { useEffect } from 'react';
 
 function Menu(props) {
-  const { isMenuOpen, setisMenuOpen, selectedBar, resetViewport } = props
+  const { isMenuOpen, setisMenuOpen, selectedBar} = props
 
   const toggleMenu = () => {
     setisMenuOpen(!isMenuOpen)
-    resetViewport()
   }
   
   return (

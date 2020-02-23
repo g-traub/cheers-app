@@ -1,8 +1,10 @@
 @import 'style/colors.scss';
 
 #Menu{
-  width: 100vw;
-  flex-shrink: 1;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
   box-sizing: border-box;
   padding: 0 1rem;
   background-color: #fff;

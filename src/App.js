@@ -22,7 +22,6 @@ function App() {
           <HomePage />
         </Route>
       </Switch>
-      <footer></footer>
     </div>
   );
 }

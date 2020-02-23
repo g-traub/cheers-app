@@ -32,7 +32,7 @@ function Map() {
   // state
   const [viewport, setViewport] = useState({
     width: '100vw',
-    height: '100%',
+    height: '100vh',
     latitude: 48.857704,
     longitude: 2.339466,
     zoom: 11.5,
@@ -64,30 +64,25 @@ function Map() {
 
   }, []);
 
-  const zoomTo = (feature) => {
-    setViewport({
-      ...viewport,
-      longitude: feature.geometry.coordinates[0],
-      latitude: feature.geometry.coordinates[1],
-      zoom: 15.5,
-      transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
-      transitionDuration: 800
-    });
-  }
+  // const zoomTo = (feature) => {
+  //   setViewport({
+  //     ...viewport,
+  //     longitude: feature.geometry.coordinates[0],
+  //     latitude: feature.geometry.coordinates[1],
+  //     zoom: 15.5,
+  //     transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
+  //     transitionDuration: 800
+  //   });
+  // }
 
   const showBarInfos = (bar) => {
     setisMenuOpen(true)
     setSelectedBar(bar.properties)
-    zoomTo(bar)
+    // zoomTo(bar)
   };
-
-  const resetViewport = () => {
-    setViewport({...viewport, height: '100%'})
-  }
 
   const closeMenu = () => {
     setisMenuOpen(false)
-    resetViewport()
   }
 
   return (
@@ -120,7 +115,7 @@ function Map() {
         />
       </MapGL>
 
-      <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} resetViewport={resetViewport} setisMenuOpen={setisMenuOpen}/>
+      <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen}/>
     </section>
   );
 }
