@@ -4,16 +4,11 @@ import { Link } from "react-router-dom";
 import logo from 'assets/logo_text.svg';
 import './HomePage.scss';
 
-import Picker from 'components/Picker/Picker'
+import Filter from 'components/Filter/Filter'
 
 function App() {
-  const [value, setValue] = useState('6€');
-  const handleChange = newValue => {
-    setValue(newValue)
-  }
-
   return (
-    <Picker label="Less then" values={['1€', '2€', '3€', '4€', '5€', '6€', '7€', '8€', '9€', '10€']} value={value} handleChange={handleChange} />
+    <Filter />
     // <div className="Home">
     //   <img src={logo} className="App-logo" alt="logo" />
     //   <div>

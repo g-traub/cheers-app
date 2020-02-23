@@ -1,0 +1,45 @@
+@import "style/colors.scss";
+#Filter {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  .filter__heading {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+    width: 80%;
+    padding: .5rem 1rem;
+  }
+  .filter__icon {
+    margin: 0.3rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $orange;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    svg {
+      path[fill="#E4E4E4"],
+      path[fill="#E5E5E5"] {
+        fill: white;
+      }
+      path {
+        fill: $orange;
+      }
+    }
+  }
+  .filter__name {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: .3rem;
+  }
+  .filter__button {
+    display: inline-block;
+    cursor: pointer;
+    margin: 1rem 0;
+    padding: 0.75rem 2.5rem;
+    background: linear-gradient(85.49deg, #ffe082 0.96%, #ffc107 49.51%, #ffa000 98.44%), #ffe082;
+    border-radius: 10px;
+    color: #fff;
+  }
+}
