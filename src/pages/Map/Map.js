@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MapGL, { Source, Layer, GeolocateControl } from 'react-map-gl';
+import MapGL, { FlyToInterpolator, Source, Layer, GeolocateControl } from 'react-map-gl';
 import axios from 'axios';
 
 // components
@@ -11,6 +11,8 @@ import barPin from 'assets/icons/barPin.png'
 import { clusterCircleLayer } from './layers';
 // map style
 import 'mapbox-gl/dist/mapbox-gl.css';
+//page style
+import './Map.scss'
 
 function Map() {
   // data
@@ -32,11 +34,13 @@ function Map() {
   // state
   const [viewport, setViewport] = useState({
     width: '100vw',
-    height: '100vh',
+    height: '100%',
+    flex: '1 1 auto',
     latitude: 48.857704,
     longitude: 2.339466,
     zoom: 11.5,
-    minZoom: 11
+    minZoom: 11,
+    maxZoom: 19
   });
 
   const [data, setData] = useState(null);
@@ -70,8 +74,20 @@ function Map() {
     })
   };
 
+  const zoomTo = (feature) => {
+    setViewport({
+      ...viewport,
+      longitude: feature.geometry.coordinates[0],
+      latitude: feature.geometry.coordinates[1],
+      zoom: 17,
+      transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
+      transitionDuration: 1000
+    });
+  }
+
   const showBarInfos = (bar) => {
-    setSelectedBar(bar)
+    zoomTo(bar)
+    setSelectedBar(bar.properties)
   };
 
   return (

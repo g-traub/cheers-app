@@ -1,14 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import './BarCard.scss';
 
 function BarCard(props) {
   const metros = props.bar.metro.split(',')
-
-  // @TODO:remove that
-  useEffect(() => {
-    console.log(props.bar)
-  })
 
   return (
     <section className="bar">
