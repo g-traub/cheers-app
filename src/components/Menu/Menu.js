@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 //components
 import BarCard from 'components/BarCard/BarCard'
@@ -6,15 +6,18 @@ import BarCard from 'components/BarCard/BarCard'
 import './Menu.scss';
 
 function Menu(props) {
-
-  const [isMenuOpen, setisMenuOpen] = useState(false);
+  const {isMenuOpen, setisMenuOpen, selectedBar, resetViewport} = props
 
   useEffect(() => {
-    if (props.selectedBar) {
+    if (selectedBar) {
       setisMenuOpen(true)
     }
-  }, [props.selectedBar])
+  }, [selectedBar])
   
+  const toggleMenu = () => {
+    setisMenuOpen(!isMenuOpen)
+    resetViewport()
+  }
   return (
     <section id="Menu" className={isMenuOpen ? 'isOpen' : ''}>
       <div className="menu">
@@ -30,7 +33,7 @@ function Menu(props) {
           <div className="button__text">Now</div>
           <img className="button__icon button__icon--time" src={require('assets/icons/Time.svg')} alt="" />
         </div>
-        <div onClick={() => setisMenuOpen(!isMenuOpen)} className="filter__button">{isMenuOpen ? 'Ok' : 'More filters'}</div>
+        <div onClick={toggleMenu} className="filter__button">{isMenuOpen ? 'Ok' : 'More filters'}</div>
       </div>
       </div>
     </section >

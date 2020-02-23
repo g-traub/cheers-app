@@ -5,8 +5,6 @@ import axios from 'axios';
 // components
 import Menu from 'components/Menu/Menu'
 import BarPins from 'components/BarPins/BarPins'
-// icons
-import barPin from 'assets/icons/barPin.png'
 // layers
 import { clusterCircleLayer } from './layers';
 // map style
@@ -35,7 +33,6 @@ function Map() {
   const [viewport, setViewport] = useState({
     width: '100vw',
     height: '100%',
-    flex: '1 1 auto',
     latitude: 48.857704,
     longitude: 2.339466,
     zoom: 11.5,
@@ -45,6 +42,7 @@ function Map() {
 
   const [data, setData] = useState(null);
   const [selectedBar, setSelectedBar] = useState(null);
+  const [isMenuOpen, setisMenuOpen] = useState(false);
 
   // effects
   useEffect(() => {
@@ -66,14 +64,6 @@ function Map() {
 
   }, []);
 
-  // Functions 
-  const load = (map) => {
-    map.target.loadImage(barPin, (error, image) => {
-      if (error) console.log(error)
-      map.target.addImage('barPin', image)
-    })
-  };
-
   const zoomTo = (feature) => {
     setViewport({
       ...viewport,
@@ -90,6 +80,15 @@ function Map() {
     setSelectedBar(bar.properties)
   };
 
+  const resetViewport = () => {
+    setViewport({...viewport, height: '100vh'})
+  }
+
+  const closeMenu = () => {
+    setisMenuOpen(false)
+    resetViewport()
+  }
+
   return (
     <section id="Map">
       <MapGL
@@ -97,21 +96,21 @@ function Map() {
         onViewportChange={setViewport}
         mapboxApiAccessToken={MAPBOXTOKEN}
         mapStyle={mapStyle}
-        onLoad={load}
+        onClick={closeMenu}
       >
-        {data &&
-          <BarPins data={data.features} onClick={showBarInfos} />}
+        {data /* && viewport.zoom > 14 */ &&
+          <BarPins data={data.features} onClick={showBarInfos} selectedBar={selectedBar} />}
 
-        <Source
+        {/* <Source
           id="bars-clubs"
           type="geojson"
           data={data}
           cluster={true}
-          clusterMaxZoom={14}
+          clusterMaxZoom={13}
           clusterRadius={50}
         >
           <Layer {...clusterCircleLayer} />
-        </Source>
+        </Source> */}
 
         <GeolocateControl
           style={geolocateControlStyle}
@@ -120,7 +119,7 @@ function Map() {
         />
       </MapGL>
 
-      <Menu selectedBar={selectedBar} />
+      <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} resetViewport={resetViewport} setisMenuOpen={setisMenuOpen}/>
     </section>
   );
 }
