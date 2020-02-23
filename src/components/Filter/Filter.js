@@ -8,28 +8,35 @@ import { ReactComponent as Happyhour } from 'assets/icons/Happyhour.svg'
 import { ReactComponent as Beer } from 'assets/icons/Beer.svg'
 import { ReactComponent as Time } from 'assets/icons/Time.svg'
 
-function Filter() {
-  const [value, setValue] = useState('6€');
+const icons = { Happyhour, Beer, Time }
+
+function Filter(props) {
+  // props
+  const { name, title, condition, values, setIsMenuOpen } = props
+
+  // @TODO : local value get last sent value else get this one 
+  const [value, setValue] = useState(values[Math.round(values.length / 2)]);
   const handleChange = newValue => {
     setValue(newValue)
   }
+
+  const filterBars = () => {
+    setIsMenuOpen(false)
+    console.log(value)
+  }
+
+  const Icon = icons[name];
 
   return (
     <div id="Filter">
       <div className="filter__heading">
         <div className="filter__icon">
-          <Happyhour width="25px" />
+          <Icon height="30" />
         </div>
-        {/* <div className="filter__icon">
-          <Beer width="25px"/>
-        </div>
-        <div className="filter__icon">
-          <Time width="25px"/>
-        </div> */}
-        <div className="filter__name">Happy Hour</div>
+        <div className="filter__name">{title}</div>
       </div>
-      <Picker label="Less then" values={['3€', '4€', '5€', '6€', '7€', '8€']} value={value} handleChange={handleChange} />
-      <div className="filter__button">Ok</div>
+      <Picker label={condition} values={values} value={value} handleChange={handleChange} />
+      <div onClick={filterBars} className="filter__button">Ok</div>
     </div>
   )
 }

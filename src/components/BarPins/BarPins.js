@@ -10,7 +10,6 @@ function BarPins(props) {
     () => {
       return data.map(bar => {
         const selected = selectedBar ? selectedBar.id === bar.properties.id : null;
-        console.log(selected)
         return (
           <Marker key={`marker-${bar.properties.id}`} longitude={bar.geometry.coordinates[0]} latitude={bar.geometry.coordinates[1]}>
             <svg
