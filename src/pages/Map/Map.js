@@ -69,19 +69,20 @@ function Map() {
       ...viewport,
       longitude: feature.geometry.coordinates[0],
       latitude: feature.geometry.coordinates[1],
-      zoom: 17,
+      zoom: 15.5,
       transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
-      transitionDuration: 1000
+      transitionDuration: 800
     });
   }
 
   const showBarInfos = (bar) => {
-    zoomTo(bar)
+    setisMenuOpen(true)
     setSelectedBar(bar.properties)
+    zoomTo(bar)
   };
 
   const resetViewport = () => {
-    setViewport({...viewport, height: '100vh'})
+    setViewport({...viewport, height: '100%'})
   }
 
   const closeMenu = () => {
