@@ -4,7 +4,6 @@ import React from 'react';
 import MenuContent from 'components/MenuContent/MenuContent'
 //style 
 import './Menu.scss';
-import { useState } from 'react';
 // icons
 import {ReactComponent as Time} from 'assets/icons/Time.svg'
 import {ReactComponent as Beer} from 'assets/icons/Beer.svg'
@@ -12,10 +11,8 @@ import {ReactComponent as Happy} from 'assets/icons/Happyhour.svg'
 import {ReactComponent as Terrace} from 'assets/icons/Terrace.svg'
 
 function Menu(props) {
-  const { isMenuOpen, setisMenuOpen, selectedBar} = props
-  
-  const [activeContent, setActiveContent] = useState(null)
-  
+  const { isMenuOpen, setisMenuOpen, selectedBar, activeContent, setActiveContent } = props
+    
   const openFilter = (filterName) => () => {
     if(filterName === 'Terrace') {
       // @TODO: directly filter terrace

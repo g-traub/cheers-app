@@ -43,6 +43,7 @@ function Map() {
   const [data, setData] = useState(null);
   const [selectedBar, setSelectedBar] = useState(null);
   const [isMenuOpen, setisMenuOpen] = useState(false);
+  const [activeContent, setActiveContent] = useState(null)
 
   // effects
   useEffect(() => {
@@ -76,6 +77,7 @@ function Map() {
   // }
 
   const showBarInfos = (bar) => {
+    setActiveContent('bar')
     setisMenuOpen(true)
     setSelectedBar(bar.properties)
     // zoomTo(bar)
@@ -115,7 +117,7 @@ function Map() {
         />
       </MapGL>
 
-      <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen}/>
+      <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen} activeContent={activeContent} setActiveContent={setActiveContent}/>
     </section>
   );
 }
