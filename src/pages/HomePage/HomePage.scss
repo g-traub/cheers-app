@@ -1,3 +1,17 @@
+@import 'style/colors.scss';
+
+
+/*PlaceHolders*/
+%level {
+  display: block;
+  font-size: .8rem;
+  margin-left: 25px;
+  width: 50px;
+  color: $orange;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+
 .Home {
   background-color: #fff;
   min-height: 100vh;
@@ -6,12 +20,278 @@
   align-items: center;
   justify-content: center;
   color: #000;
+  .home__container {
+    width: 90%;
+    margin: 3vh auto;
+  }
+  p {
+    margin: .5rem 0;
+  }
 }
 
-.App-logo {
-  height: 40vmin;
+.logo {
+  height: 70px;
+  display: flex;
+  margin: 0 auto 1.5rem auto;
 }
 
-.App-link {
-  color: #FFA000;
-} 
+.btn-start {
+  display: flex;
+  justify-content: center;
+    a {
+      color: white;
+      z-index: 1;
+      background: linear-gradient(138.05deg, #FFE082 24%, #FFC107 36.51%, #FFA000 66.44%), #FFE082;
+      height: 10vh;
+      display: flex;
+      width: 10vh;
+      text-decoration: none;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      font-size: 1.3rem;
+      &:before{
+        content: "";
+        z-index: -1;
+        background: linear-gradient(106.05deg, #FFE082 0.96%, #FFC107 49.51%, #FFA000 98.44%), #FFE082;
+        position: absolute;
+        display: block;
+        height: 7vh;
+        width: 7vh;
+        border-radius: 50%;
+        left: -27px;
+        bottom: 1px;
+      }
+      &:after{
+        content: "";
+        z-index: -1;
+        background-color: $orange;
+        position: absolute;
+        display: block;
+        height: 6vh;
+        width: 6vh;
+        border-radius: 50%;
+        left: 43px;
+        bottom: 5px;
+      }
+    }
+}
+
+.t-center {
+  text-align: center;
+}
+
+.home__title {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.howis__desc {
+  span {
+    color: $orange;
+  }
+}
+
+.howis__boutons {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 2rem 0;
+  .filter__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $orange;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    &.happy-icon {
+      path:nth-child(2) {
+        fill: $orange;
+      }
+    }
+  }
+  path {
+    fill: white;
+  }
+}
+
+
+.howtoroad__container {
+  width: 100%;
+  .howtoroad__legend {
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    .howtoroad__legend-price {
+      .point-icon {
+        width: 15px;
+        height: 15px;
+        margin: 5px 0;
+        border-radius: 50%;
+        display: block;
+        &.level-4 {
+          background-color: $orange;
+          &:before {
+            content: "€€€€";
+            @extend %level;
+          }
+        }
+        &.level-3 {
+          background-color: #FFC107;
+          &:before {
+            content: "€€€";
+            @extend %level;
+          }
+        }
+        &.level-2 {
+          background-color: #FFD451;
+          &:before {
+            content: "€€";
+            @extend %level;
+          }
+        }
+        &.level-1 {
+          background-color: #FFD451;
+          &:before {
+            content: "€";
+            @extend %level;
+          }
+        }
+     }
+    }
+    .howtoroad__legend-bar {
+      .howtoroad__legend-bar-points {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      .point-icon {
+        border: grey 1px solid;
+        border-radius: 50%;
+        margin: 0 5px;
+        &.point-less  {
+          width: 20px;
+          height: 20px;
+          &:before {
+            content: "-";
+            display: flex;
+            font-size: .8rem;
+            font-weight: 700;
+            color: $orange;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+          }
+        }
+        &.point-neutral  {
+          width: 30px;
+          height: 30px;
+        }
+        &.point-more  {
+          width: 50px;
+          height: 50px;
+          &:before {
+            content: "+";
+            display: flex;
+            font-size: 1rem;
+            font-weight: 700;
+            color: $orange;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+  .howtoroad__exemple {
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-height: 250px;
+    justify-content: center;
+    .point-icon {
+      position: absolute;
+      display: block;
+      border: 2px solid white;
+      border-radius: 50%;
+      &.level-4 {
+        height: 100px;
+        width: 100px;
+        top: 9%;
+        background-color: #FFE38D;
+        svg {
+          position: absolute;
+          transform: scaleX(-1);
+          top: 70px;
+          left: 112px;
+        }
+        &:before {
+          content: "Cheaper";
+          position: absolute;
+          top: 100px;
+          left: 105px;
+          white-space: nowrap;
+        }
+      }
+      &.level-3 {
+        height: 70px;
+        width: 70px;
+        top: 19%;
+        right: 55%;
+        background-color: #FFD451;
+        svg {
+          position: absolute;
+          top: 34px;
+          right: 80px;
+        }
+        &:before {
+          content: "Cheaper";
+          position: absolute;
+          top: 70px;
+          right: 74px;
+          white-space: nowrap;
+        }
+      }
+      &.level-2 {
+        height: 50px;
+        width: 50px;
+        right: 50%;
+        top: 50%;
+        background-color: #FFA000;
+        svg {
+          position: absolute;
+          transform: rotate(-61deg);
+          top: 52px;
+          right: 11px;
+        }
+        &:before {
+          content: "Less cheap";
+          position: absolute;
+          top: 90px;
+          white-space: nowrap;
+        }
+      }
+      &.level-1 {
+        height: 30px;
+        width: 30px;
+        top: 11%;
+        right: 34%;
+        background-color: #FFC107;
+        svg {
+          transform: scaleX(-1) rotate(51deg);
+          position: absolute;
+          bottom: 24px;
+          left: 30px;
+        }
+        &:before {
+          content: "Cheap";
+          position: absolute;
+          left: 60px;
+        }
+      }
+    }
+  }
+}
+
