@@ -9,16 +9,20 @@
   display: flex;
   align-items: flex-end;
   flex-wrap: wrap;
+  margin-bottom: .5rem;
 }
 .bar__name {
   margin: 0 .5rem 0 0;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 .bar__address {
   color: $darkGrey;
   font-weight: normal;
   font-size: .9rem;
   margin: .3rem 0;
+  sup {
+  font-size: .7rem;
+  }
 }
 .bar__rating {
   list-style-type: none;
