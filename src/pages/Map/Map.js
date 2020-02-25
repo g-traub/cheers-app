@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MapGL, { FlyToInterpolator, Source, Layer, GeolocateControl } from 'react-map-gl';
-import axios from 'axios';
-
+// services
+import { getOpenBars } from 'services/bars'
 // components
 import Menu from 'components/Menu/Menu'
 import BarPins from 'components/BarPins/BarPins'
@@ -16,7 +16,7 @@ function Map() {
   // data
   const MAPBOXTOKEN = process.env.REACT_APP_MAPBOX_TOKEN
   const mapStyle = 'mapbox://styles/guillaumetrb/ck6jgtsnn137j1imuq0ll8w8b'
-  const apiUrl = 'https://project-cheers.herokuapp.com/api'
+  
   const geolocateControlStyle = {
     display: 'flex',
     alignItems: 'center',
@@ -47,40 +47,21 @@ function Map() {
 
   // effects
   useEffect(() => {
-    async function fetchData() {
-      const response = await axios(
-        `${apiUrl}/geojson`,
-      );
-
-      setData(response.data);
-      localStorage.setItem('barsData', JSON.stringify(response.data));
-    }
-
-    const localData = localStorage.getItem('barsData') || null;
+    const localData = localStorage.getItem('barsData')
     if (localData) {
       setData(JSON.parse(localData));
     } else {
-      fetchData();
+      getOpenBars().then(bars => {
+        setData(bars)
+      })
     }
 
   }, []);
-
-  // const zoomTo = (feature) => {
-  //   setViewport({
-  //     ...viewport,
-  //     longitude: feature.geometry.coordinates[0],
-  //     latitude: feature.geometry.coordinates[1],
-  //     zoom: 15.5,
-  //     transitionInterpolator: new FlyToInterpolator({speed: 1.2}),
-  //     transitionDuration: 800
-  //   });
-  // }
 
   const showBarInfos = (bar) => {
     setActiveContent('bar')
     setisMenuOpen(true)
     setSelectedBar(bar.properties)
-    // zoomTo(bar)
   };
 
   const closeMenu = () => {
