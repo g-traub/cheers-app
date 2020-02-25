@@ -11,7 +11,7 @@ function BarPins(props) {
       return data.map(bar => {
         const selected = selectedBar ? selectedBar.id === bar.properties.id : null;
         return (
-          <Marker key={`marker-${bar.properties.id}`} longitude={bar.geometry.coordinates[0]} latitude={bar.geometry.coordinates[1]}>
+          <Marker key={`marker-${bar.properties.id}`} latitude={bar.geometry.coordinates[0]} longitude={bar.geometry.coordinates[1]} >
             <svg
               height={selected ? 50 : 35}
               viewBox="0 0 25 38"
