@@ -4,6 +4,7 @@ import MapGL, { FlyToInterpolator, Source, Layer, GeolocateControl } from 'react
 import { getOpenBars } from 'services/bars'
 // components
 import Menu from 'components/Menu/Menu'
+import FilterSelected from 'components/FilterSelected/FilterSelected'
 import BarPins from 'components/BarPins/BarPins'
 // layers
 import { clusterCircleLayer } from './layers';
@@ -70,6 +71,7 @@ function Map() {
 
   return (
     <section id="Map">
+      <FilterSelected/>
       <MapGL
         {...viewport}
         onViewportChange={setViewport}
