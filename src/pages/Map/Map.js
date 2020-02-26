@@ -47,14 +47,9 @@ function Map() {
 
   // effects
   useEffect(() => {
-    const localData = localStorage.getItem('barsData')
-    if (localData) {
-      setData(JSON.parse(localData));
-    } else {
       getOpenBars().then(bars => {
         setData(bars)
       })
-    }
 
   }, []);
 

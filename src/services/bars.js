@@ -4,10 +4,10 @@ const apiUrl = 'https://cheeers-api.herokuapp.com/api'
 
 export async function getOpenBars() {
   const today = new Date()
-  const currentHour = today.getHours()
-
+  const currentTime = today.getHours()+":"+today.getMinutes()+":"+today.getSeconds();
+  
   const response = await axios(
-    `${apiUrl}?currentHour=${currentHour}`,
+    `${apiUrl}/bars/open?currentTime=${currentTime}`,
   );
   return response.data
 }
