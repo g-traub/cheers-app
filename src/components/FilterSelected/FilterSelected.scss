@@ -1,0 +1,28 @@
+@import "style/colors.scss";
+
+#FilterSelected {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  margin: 10px 0 0 10px;
+  .filter__selected-container {
+    background-color: white;
+    padding: 15px 12px;
+    border: 2px solid $orange;
+    border-radius: 20px;
+  }
+}
+
+.filter__selected-icon {
+  text-align: center;
+  margin: 5px 0;
+  &.happy-icon {
+    path:nth-child(2) {
+      fill: white!important;
+    }
+  }
+  path {
+    fill:$orange;
+  }
+}
