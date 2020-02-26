@@ -12,17 +12,29 @@ const icons = { Happyhour, Beer, Time }
 
 function Filter(props) {
   // props
-  const { name, title, condition, values, setIsMenuOpen } = props
+  const { name, title, condition, values, setIsMenuOpen, filters, setFilters } = props
 
   // @TODO : local value get last sent value else get this one 
   const [value, setValue] = useState(values[Math.round(values.length / 2)]);
   const handleChange = newValue => {
     setValue(newValue)
   }
-
+  
   const filterBars = () => {
     setIsMenuOpen(false)
-    console.log(value)
+    switch (name) {
+      case 'Happyhour':
+        setFilters({...filters, happyHour: { value: `happyAfter=${value.slice(0, -1)}:00:00`, active: true }})
+        break;
+      case 'Beer':
+        setFilters({...filters, price: { value: `price=${value.slice(0, -1)}`, active: true }})
+        break;
+      case 'Time':
+          setFilters({...filters, openHour: { value: `openAfter=${value.slice(0, -1)}:00:00`, active: true }})
+        break;
+      default: return;
+    }
+    
   }
 
   const Icon = icons[name];

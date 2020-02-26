@@ -5,9 +5,9 @@ import BarCard from 'components/BarCard/BarCard'
 import Filter from 'components/Filter/Filter';
 
 export default function MenuContent(props) {
-  const { activeContent, selectedBar, setisMenuOpen } = props
+  const { activeContent, selectedBar, setisMenuOpen, filters, setFilters } = props
 
-  const filters = [
+  const filtersContent = [
     {
       name: 'Happyhour',
       title: 'Happy Hour',
@@ -33,9 +33,9 @@ export default function MenuContent(props) {
     <>
       {activeContent === 'bar' ? <BarCard bar={selectedBar} /> : null}
 
-      {filters.map(filter => {
-        if (filter.name === activeContent) {
-          return <Filter name={filter.name} title={filter.title} condition={filter.condition} values={filter.values} key={filter.name} setIsMenuOpen={setisMenuOpen}/>
+      {filtersContent.map(filterContent => {
+        if (filterContent.name === activeContent) {
+          return <Filter name={filterContent.name} title={filterContent.title} condition={filterContent.condition} values={filterContent.values} key={filterContent.name} setIsMenuOpen={setisMenuOpen} filters={filters} setFilters={setFilters}/>
         }
       })}
 

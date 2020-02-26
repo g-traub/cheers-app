@@ -11,11 +11,15 @@ import {ReactComponent as Happy} from 'assets/icons/Happyhour.svg'
 import {ReactComponent as Terrace} from 'assets/icons/Terrace.svg'
 
 function Menu(props) {
-  const { isMenuOpen, setisMenuOpen, selectedBar, activeContent, setActiveContent } = props
+  const { isMenuOpen, setisMenuOpen, selectedBar, activeContent, setActiveContent, filters, setFilters } = props
     
   const openFilter = (filterName) => () => {
     if(filterName === 'Terrace') {
-      // @TODO: directly filter terrace
+      if (filters.terrace.active) {
+        setFilters({...filters, terrace: { value: 'terrace=1', active: false }});
+      } else {
+        setFilters({...filters, terrace: { value: 'terrace=1', active: true }});
+      }
     } else {
       setActiveContent(filterName)
       setisMenuOpen(true)
@@ -26,7 +30,7 @@ function Menu(props) {
     <section id="Menu" className={isMenuOpen ? 'isOpen' : ''}>
       <div className="menu">
         {isMenuOpen && <div className="menu__content">
-          <MenuContent selectedBar={selectedBar} activeContent={activeContent} setisMenuOpen={setisMenuOpen}/>
+          <MenuContent selectedBar={selectedBar} activeContent={activeContent} setisMenuOpen={setisMenuOpen} filters={filters} setFilters={setFilters}/>
         </div>}
         <div className={isMenuOpen ? 'buttons buttons--bordered' : 'buttons'}>
           <div onClick={openFilter('Time')} className="button">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MapGL, { FlyToInterpolator, Source, Layer, GeolocateControl } from 'react-map-gl';
 // services
-import { getOpenBars } from 'services/bars'
+import { getOpenBars, getFilteredBars} from 'services/bars'
 // components
 import Menu from 'components/Menu/Menu'
 import BarPins from 'components/BarPins/BarPins'
@@ -41,17 +41,30 @@ function Map() {
   });
 
   const [data, setData] = useState(null);
+  const [filters, setFilters] = useState({
+    price: {value: null, active: false},
+    terrace: {value: null, active: false},
+    endHour: {value: null, active: false},
+    endHappy: {value: null, active: false}
+  });
   const [selectedBar, setSelectedBar] = useState(null);
   const [isMenuOpen, setisMenuOpen] = useState(false);
-  const [activeContent, setActiveContent] = useState(null)
+  const [activeContent, setActiveContent] = useState(null);
 
   // effects
   useEffect(() => {
+    if(Object.values(filters).every(filter => !filter.active)){
       getOpenBars().then(bars => {
         setData(bars)
       })
+    } else {
+      console.log(filters)
+      getFilteredBars(filters).then(bars => {
+        setData(bars)
+      })
+    }
 
-  }, []);
+  }, [filters]);
 
   const showBarInfos = (bar) => {
     setActiveContent('bar')
@@ -93,7 +106,7 @@ function Map() {
         />
       </MapGL>
 
-      <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen} activeContent={activeContent} setActiveContent={setActiveContent}/>
+      <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters}/>
     </section>
   );
 }
