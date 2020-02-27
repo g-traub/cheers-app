@@ -50,12 +50,13 @@
   }
   .filterButtons {
     display: flex;
-    flex: 1 0 70vw;
-    justify-content: space-evenly;
+    flex: 1 1 70vw;
+    justify-content: space-around;
     border: 1px solid $orange;
     margin-left: 1rem;
     border-radius: 20px; 
     max-width: 400px;
+    padding: 0 .5rem;
   }
   .buttons--bordered {
     border-top-color: rgba(0,0,0,.075);
@@ -75,8 +76,8 @@
     opacity: 0.5;
   }
   .filterButton {
-    padding: 0 .5rem;
     display: flex;
+    flex:1;
     flex-direction: column;
     align-items: center;
     justify-content: center;

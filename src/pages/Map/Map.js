@@ -188,7 +188,7 @@ function Map() {
         />
       </MapGL>
 
-      <FilterSelected />
+      {Object.values(filters).some(filter => filter.active) && <FilterSelected filters={filters} />}
       {/* <PopupInfo/> */}
       <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters} />
     </section>
