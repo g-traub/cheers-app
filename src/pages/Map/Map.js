@@ -82,8 +82,7 @@ function Map() {
       .flat()
     : null;
 
-  // ({sum: props.myValue})
-  // get clusters
+  // clusters
   const { clusters, supercluster } = useSupercluster({
     points,
     bounds,
@@ -102,6 +101,21 @@ function Map() {
       }
     },
   });
+
+  const zoomToCluster = (clusterId, latitude, longitude) => {
+    console.log('yes')
+    const zoom = supercluster.getClusterExpansionZoom(clusterId)
+    setViewport({ 
+      ...viewport,
+      latitude, 
+      longitude,
+      zoom,
+      transitionInterpolator: new FlyToInterpolator({
+        speed: 2
+      }),
+      transitionDuration: 'auto'
+    })
+  }
 
   // menu interaction
   const [isMenuOpen, setisMenuOpen] = useState(false);
@@ -136,7 +150,7 @@ function Map() {
 
           // we have a cluster to render
           if (isCluster) {
-            return <Cluster clusterData={cluster} key={`cluster-${cluster.id}`} />
+            return <Cluster clusterData={cluster} key={`cluster-${cluster.id}`} zoomToCluster={zoomToCluster} />
           }
 
           // we have a single point (bar) to render

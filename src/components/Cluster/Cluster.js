@@ -14,6 +14,7 @@ export default function Cluster(props) {
     >
       <div
         className="cluster-marker"
+        onClick={() => props.zoomToCluster(props.clusterData.properties.cluster_id, latitude, longitude)}
         // style={{
         //   width: `${pointCount}px`,
         //   height: `${pointCount}px`
