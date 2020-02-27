@@ -1,7 +1,9 @@
 @import 'style/colors.scss';
+@import 'style/fontface.scss';
 
 .cluster-marker {
   background-color: transparentize($orange, .3);
+  font-family: Ambit-Regular;
   border: 2px solid #fff;
   border-radius: 50%;
   display: flex;

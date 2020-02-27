@@ -1,5 +1,5 @@
 @import 'style/colors.scss';
-
+@import 'style/fontface.scss';
 
 /*PlaceHolders*/
 %level {
@@ -25,6 +25,7 @@
     margin: 3vh auto;
   }
   p {
+    font-family: Ambit-Regular;
     margin: .5rem 0;
   }
 }
@@ -40,6 +41,7 @@
   justify-content: center;
     a {
       color: white;
+      font-family: Shrikhand-Regular;
       z-index: 1;
       background: linear-gradient(138.05deg, #FFE082 24%, #FFC107 36.51%, #FFA000 66.44%), #FFE082;
       height: 10vh;
@@ -83,6 +85,7 @@
 }
 
 .home__title {
+  font-family: Ambit-SemiBold;
   font-size: 1.2rem;
   margin: 1rem 0;
 }
@@ -125,6 +128,7 @@
     justify-content: space-between;
     .howtoroad__legend-price {
       .point-icon {
+        font-family: Ambit-Light;
         width: 15px;
         height: 15px;
         margin: 5px 0;
@@ -134,6 +138,7 @@
           background-color: $lightYellow;
           &:before {
             content: "€€€€";
+            color: $lightYellow;
             @extend %level;
           }
         }
@@ -141,6 +146,7 @@
           background-color: $yellow;
           &:before {
             content: "€€€";
+            color: $yellow;
             @extend %level;
           }
         }
@@ -148,6 +154,7 @@
           background-color: $lightOrange;
           &:before {
             content: "€€";
+            color: $lightOrange;
             @extend %level;
           }
         }
@@ -155,6 +162,7 @@
           background-color: $orange;
           &:before {
             content: "€";
+            color: $orange;
             @extend %level;
           }
         }
@@ -176,7 +184,7 @@
           &:before {
             content: "-";
             display: flex;
-            font-size: .8rem;
+            font-size: .9rem;
             font-weight: 700;
             color: $orange;
             align-items: center;
@@ -216,6 +224,7 @@
       display: block;
       border: 2px solid white;
       border-radius: 50%;
+      font-family: Ambit-Regular;
       &.level-4 {
         height: 100px;
         width: 100px;
@@ -259,6 +268,7 @@
         width: 50px;
         right: 50%;
         top: 50%;
+        transform: translateY(-50%);
         background-color: $lightYellow;
         svg {
           position: absolute;

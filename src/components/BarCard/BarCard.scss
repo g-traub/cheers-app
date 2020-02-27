@@ -1,4 +1,6 @@
 @import 'style/colors.scss';
+@import 'style/fontface.scss';
+
 .bar {
   margin: 0 1.5rem;
   hr {
@@ -12,6 +14,7 @@
   margin-bottom: .5rem;
 }
 .bar__name {
+  font-family: Ambit-SemiBold;
   margin: 0 .5rem 0 0;
   font-size: 1.8rem;
 }
@@ -20,6 +23,7 @@
   font-weight: normal;
   font-size: .9rem;
   margin: .3rem 0;
+  font-family: Ambit-Light;
   sup {
   font-size: .7rem;
   }
@@ -92,11 +96,13 @@
   align-items: center;
 }
 .hours__label {
+  font-family: Ambit-Regular;
   margin: 0;
   font-size: .8rem;
   color: $grey; 
 }
 .value {
+  font-family: Ambit-Bold;
   font-size: 1.5rem;
   font-weight: bold;
   margin: .4rem 0 0 0;
