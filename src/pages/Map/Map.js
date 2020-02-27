@@ -5,6 +5,7 @@ import { getOpenBars, getFilteredBars} from 'services/bars'
 // components
 import Menu from 'components/Menu/Menu'
 import FilterSelected from 'components/FilterSelected/FilterSelected'
+import PopupInfo from 'components/PopupInfo/PopupInfo'
 import BarPins from 'components/BarPins/BarPins'
 // layers
 import { clusterCircleLayer } from './layers';
@@ -79,7 +80,6 @@ function Map() {
 
   return (
     <section id="Map">
-      <FilterSelected/>
       <MapGL
         {...viewport}
         onViewportChange={setViewport}
@@ -107,7 +107,8 @@ function Map() {
           trackUserLocation={true}
         />
       </MapGL>
-
+      <FilterSelected/>
+      <PopupInfo/>
       <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters}/>
     </section>
   );
