@@ -6,10 +6,24 @@ import './Cluster.scss'
 
 export default function Cluster(props) {
   const [longitude, latitude] = props.clusterData.geometry.coordinates
-  
-  const { point_count: pointCount } = props.clusterData.properties
+  const { point_count: pointCount, avg } = props.clusterData.properties
 
   const size = (pointCount + 10) * 2;
+
+  const getClusterColor = () => {
+    if (avg > 7.5) {
+      return '#FFE38D'
+    } else if (avg > 6.5) { 
+      return '#FFD451'
+    }
+    else if (avg > 6) { 
+      return '#ffc107' 
+    }
+    else {
+      return '#ffa000'
+    }
+  }
+
   return (
     <Marker
       latitude={latitude}
@@ -23,9 +37,10 @@ export default function Cluster(props) {
           width: `${size}px`,
           height: `${size}px`,
           transform: `translate(${-size / 2}px,${-size / 2}px)`,
+          backgroundColor: getClusterColor()
         }}
       >
-        {props.clusterData.properties.avg.toFixed(1)}&euro;
+        {avg.toFixed(1)}&euro;
       </div>
     </Marker>
   )
