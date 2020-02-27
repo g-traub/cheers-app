@@ -8,8 +8,7 @@ export default function Cluster(props) {
   const [longitude, latitude] = props.clusterData.geometry.coordinates
   const { point_count: pointCount, avg } = props.clusterData.properties
 
-  const size = (pointCount + 10) * 2;
-
+  const size = pointCount*1.5 + 30 ;
   const getClusterColor = () => {
     if (avg > 7.5) {
       return '#FFE38D'

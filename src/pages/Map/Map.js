@@ -67,7 +67,7 @@ function Map() {
       newViewport.latitude = maxBounds.maxLatitude;
     }
 
-    setViewport({...newViewport})
+    setViewport({ ...newViewport })
   }
 
   // data filters for querying api
@@ -118,7 +118,7 @@ function Map() {
       maxZoom: 15,
       map: (props) => ({
         count: 1,
-        sum: parseFloat(props.priceNormal)
+        sum: parseFloat(props.priceCurrent)
       }),
       reduce: (accumulated, props) => {
         accumulated.count += props.count
@@ -188,9 +188,9 @@ function Map() {
         />
       </MapGL>
 
-      <FilterSelected/>
+      <FilterSelected />
       {/* <PopupInfo/> */}
-      <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters}/>
+      <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters} />
     </section>
   );
 }
