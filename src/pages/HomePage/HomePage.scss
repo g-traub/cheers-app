@@ -1,5 +1,5 @@
 @import 'style/colors.scss';
-
+@import 'style/fontface.scss';
 
 /*PlaceHolders*/
 %level {
@@ -25,6 +25,7 @@
     margin: 3vh auto;
   }
   p {
+    font-family: Ambit-Regular;
     margin: .5rem 0;
   }
 }
@@ -40,6 +41,7 @@
   justify-content: center;
     a {
       color: white;
+      font-family: Shrikhand-Regular;
       z-index: 1;
       background: linear-gradient(138.05deg, #FFE082 24%, #FFC107 36.51%, #FFA000 66.44%), #FFE082;
       height: 10vh;
@@ -83,6 +85,7 @@
 }
 
 .home__title {
+  font-family: Ambit-SemiBold;
   font-size: 1.2rem;
   margin: 1rem 0;
 }
@@ -125,6 +128,7 @@
     justify-content: space-between;
     .howtoroad__legend-price {
       .point-icon {
+        font-family: Ambit-Light;
         width: 15px;
         height: 15px;
         margin: 5px 0;
@@ -259,6 +263,7 @@
         width: 50px;
         right: 50%;
         top: 50%;
+        transform: translateY(-50%);
         background-color: $lightYellow;
         svg {
           position: absolute;

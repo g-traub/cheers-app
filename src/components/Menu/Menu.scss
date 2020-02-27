@@ -1,4 +1,5 @@
 @import 'style/colors.scss';
+@import 'style/fontface.scss';
 
 #Menu{
   position: fixed;
@@ -62,6 +63,7 @@
     border-top-color: rgba(0,0,0,.075);
   }
   .buttonReset {
+    font-family: Ambit-Regular;
     display: inline-flex;
     align-items: center;
     justify-content: center;

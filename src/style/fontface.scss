@@ -1,0 +1,29 @@
+@mixin add-font($name,$path,$weight,$style,$exts:null) {
+  @if length($exts) > 1 {
+    @each $ext in $exts {
+      src: url('../assets/fonts/#{$path}.#{$ext}')
+    }
+  } @else {
+    src: url('../assets/fonts/#{$path}.#{$exts}')
+  }
+  font-family: $name;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+@font-face {  @include add-font(Ambit-Black,'Ambit-Black',400,normal,(otf,ttf)); }
+@font-face {  @include add-font(Ambit-BlackItalic,'Ambit-BlackItalic',400,normal,(otf,ttf)); }
+@font-face {  @include add-font(Ambit-Bold,'Ambit-Bold',400,normal,(otf,ttf)); }
+@font-face {  @include add-font(Ambit-BoldItalic,'Ambit-BoldItalic',400,normal,(otf,ttf)); }
+@font-face {  @include add-font(Ambit-ExtraLight,'Ambit-ExtraLight',400,normal,(otf,ttf)); }
+@font-face {  @include add-font(Ambit-ExtraLightItalic,'Ambit-ExtraLightItalic',400,normal,(otf,ttf)); }
+@font-face {  @include add-font(Ambit-Italic,'Ambit-Italic',400,normal,(otf,ttf)); }
+@font-face {  @include add-font(Ambit-Light,'Ambit-Light',400,normal,(otf,ttf)); }
+@font-face {  @include add-font(Ambit-LightItalic,'Ambit-LightItalic',400,normal,(otf,ttf)); }
+@font-face {  @include add-font(Ambit-Regular,'Ambit-Regular',400,normal,(otf,ttf)); }
+@font-face {  @include add-font(Ambit-SemiBold,'Ambit-SemiBold',400,normal,(otf,ttf)); }
+@font-face {  @include add-font(Ambit-Thin,'Ambit-Thin',400,normal,(otf,ttf)); }
+@font-face {  @include add-font(Ambit-ThinItalic,'Ambit-ThinItalic',400,normal,(otf,ttf)); }
+@font-face {  @include add-font(Shrikhand-Regular,'Shrikhand-Regular',400,normal,otf); }
+
+

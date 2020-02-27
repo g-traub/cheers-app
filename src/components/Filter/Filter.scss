@@ -1,4 +1,5 @@
 @import "style/colors.scss";
+@import 'style/fontface.scss';
 #Filter {
   display: flex;
   justify-content: center;
@@ -29,11 +30,13 @@
     }
   }
   .filter__name {
+    font-family: Ambit-SemiBold;
     text-align: center;
     font-size: 1.2rem;
     margin: .3rem;
   }
   .filter__button {
+    font-family: Ambit-SemiBold;
     display: inline-block;
     cursor: pointer;
     margin: 1rem 0;
