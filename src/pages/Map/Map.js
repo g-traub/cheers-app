@@ -89,7 +89,7 @@ function Map() {
     zoom: viewport.zoom,
     options: {
       radius: 75,
-      maxZoom: 20,
+      maxZoom: 15,
       map: (props) => ({
         count: 1,
         sum: parseFloat(props.priceNormal)
