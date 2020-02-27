@@ -27,9 +27,17 @@ function Map() {
     latitude: 48.857704,
     longitude: 2.339466,
     zoom: 11.5,
-    minZoom: 1,
-    maxZoom: 17.5
+    minZoom: 11.5,
+    maxZoom: 16.5
   });
+
+  const maxBounds = {
+    minLongitude: 2.2517977468,
+    maxLongitude: 2.4186526052,
+    minLatitude: 48.81557548,
+    maxLatitude: 48.90215593
+  }
+
   const mapRef = useRef();
 
   const geolocateControlStyle = {
@@ -42,6 +50,23 @@ function Map() {
     top: 0,
     right: 0,
     margin: 10
+  }
+
+  const updateViewport = (newViewport) => {
+    if (newViewport.longitude < maxBounds.minLongitude) {
+      newViewport.longitude = maxBounds.minLongitude;
+    }
+    else if (newViewport.longitude > maxBounds.maxLongitude) {
+      newViewport.longitude = maxBounds.maxLongitude;
+    }
+    if (newViewport.latitude < maxBounds.minLatitude) {
+      newViewport.latitude = maxBounds.minLatitude;
+    }
+    else if (newViewport.latitude > maxBounds.maxLatitude) {
+      newViewport.latitude = maxBounds.maxLatitude;
+    }
+
+    setViewport({...newViewport})
   }
 
   // data filters for querying api
@@ -104,9 +129,9 @@ function Map() {
 
   const zoomToCluster = (clusterId, latitude, longitude) => {
     const zoom = supercluster.getClusterExpansionZoom(clusterId)
-    setViewport({ 
+    setViewport({
       ...viewport,
-      latitude, 
+      latitude,
       longitude,
       zoom,
       transitionInterpolator: new FlyToInterpolator({
@@ -138,7 +163,7 @@ function Map() {
       {/* <FilterSelected /> */}
       <MapGL
         {...viewport}
-        onViewportChange={setViewport}
+        onViewportChange={newViewport => updateViewport(newViewport)}
         mapboxApiAccessToken={MAPBOXTOKEN}
         mapStyle={mapStyle}
         onClick={closeMenu}
