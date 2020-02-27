@@ -45,6 +45,7 @@ function Map() {
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
+    zIndex: 12,
     width: '35px',
     height: '35px',
     top: 0,
@@ -160,7 +161,7 @@ function Map() {
 
   return (
     <section id="Map">
-      {/* <FilterSelected /> */}
+      <FilterSelected />
       <MapGL
         {...viewport}
         onViewportChange={newViewport => updateViewport(newViewport)}
@@ -181,14 +182,14 @@ function Map() {
           return <BarPin key={cluster.properties.id} barData={cluster} showBarInfos={showBarInfos} selected={selectedBar ? selectedBar.id === cluster.properties.id : false} />
         })}
 
-        {/* <GeolocateControl
+        <GeolocateControl
           style={geolocateControlStyle}
           positionOptions={{ enableHighAccuracy: true }}
           trackUserLocation={true}
-        /> */}
+        />
       </MapGL>
 
-      {/* <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters} /> */}
+      <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters} />
     </section>
   );
 }
