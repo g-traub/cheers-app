@@ -14,19 +14,19 @@ function FilterSelected() {
     <div id="FilterSelected">
         <div className="filter__selected-container">
           <div className="filter__selected-icon happy-icon">
-            <Happyhour height="30" />
+            <Happyhour height="20" />
             <div>5 $</div>
           </div>
           <div className="filter__selected-icon">
-            <Beer height="30" />
+            <Beer height="20" />
             <div>5 $</div>
           </div>
           <div className="filter__selected-icon">
-            <Time height="30" />
+            <Time height="20" />
             <div>14h</div>
           </div>
           <div className="filter__selected-icon">
-            <Terrace height="30" />
+            <Terrace height="20" />
             <div>✓</div>
           </div>
         </div>

@@ -10,7 +10,7 @@ import Menu from 'components/Menu/Menu'
 import FilterSelected from 'components/FilterSelected/FilterSelected'
 import BarPin from 'components/BarPin/BarPin'
 import Cluster from 'components/Cluster/Cluster'
-
+import PopupInfo from 'components/PopupInfo/PopupInfo'
 // styles
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './Map.scss'
@@ -161,7 +161,6 @@ function Map() {
 
   return (
     <section id="Map">
-      <FilterSelected />
       <MapGL
         {...viewport}
         onViewportChange={newViewport => updateViewport(newViewport)}
@@ -189,7 +188,9 @@ function Map() {
         />
       </MapGL>
 
-      <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters} />
+      <FilterSelected/>
+      {/* <PopupInfo/> */}
+      <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters}/>
     </section>
   );
 }
