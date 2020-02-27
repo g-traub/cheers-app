@@ -10,12 +10,12 @@ export default function Cluster(props) {
 
   const size = pointCount*1.5 + 30 ;
   const getClusterColor = () => {
-    if (avg > 7.5) {
-      return '#FFE38D'
-    } else if (avg > 6.5) { 
-      return '#FFD451'
+    if (avg > 7) {
+      return '#ffe38d'
+    } else if (avg > 6) { 
+      return '#ffd451'
     }
-    else if (avg > 6) { 
+    else if (avg > 5) { 
       return '#ffc107' 
     }
     else {

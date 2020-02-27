@@ -19,9 +19,9 @@
   }
   .picker__label {
     font-family: Ambit-Regular;
+    color: $orange;
     text-align: center;
     margin: 0.5rem 0;
-    color: $darkGrey;
   }
   .picker__values {
     font-family: Ambit-Regular;
@@ -70,5 +70,7 @@
     margin: 0 auto;
     border: 1px solid $orange;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
   }
 }
