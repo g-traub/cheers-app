@@ -5,3 +5,6 @@
 .mapboxgl-control-container {
   display: none;
 }
+.mapboxgl-marker {
+  pointer-events: none;
+}

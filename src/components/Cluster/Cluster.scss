@@ -1,0 +1,15 @@
+@import 'style/colors.scss';
+
+.cluster-marker {
+  background-color: transparentize($orange, .3);
+  border: 2px solid #fff;
+  min-height: 50px;
+  min-width: 50px;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  pointer-events: 'all';
+}

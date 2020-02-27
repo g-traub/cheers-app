@@ -1,23 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import MapGL, { FlyToInterpolator, Source, Layer, GeolocateControl } from 'react-map-gl';
+import React, { useState, useEffect, useRef } from 'react';
+import MapGL, { FlyToInterpolator, GeolocateControl } from 'react-map-gl';
+import useSupercluster from "use-supercluster";
+
 // services
-import { getOpenBars, getFilteredBars} from 'services/bars'
+import { getOpenBars, getFilteredBars } from 'services/bars'
+
 // components
 import Menu from 'components/Menu/Menu'
 import FilterSelected from 'components/FilterSelected/FilterSelected'
-import BarPins from 'components/BarPins/BarPins'
-// layers
-import { clusterCircleLayer } from './layers';
-// map style
+import BarPin from 'components/BarPin/BarPin'
+import Cluster from 'components/Cluster/Cluster'
+
+// styles
 import 'mapbox-gl/dist/mapbox-gl.css';
-//page style
 import './Map.scss'
 
 function Map() {
-  // data
+  // mapbox data
   const MAPBOXTOKEN = process.env.REACT_APP_MAPBOX_TOKEN
   const mapStyle = 'mapbox://styles/guillaumetrb/ck6jgtsnn137j1imuq0ll8w8b'
-  
+
+  // setup map
+  const [viewport, setViewport] = useState({
+    width: '100vw',
+    height: '100vh',
+    latitude: 48.857704,
+    longitude: 2.339466,
+    zoom: 11.5,
+    minZoom: 1,
+    maxZoom: 17.5
+  });
+  const mapRef = useRef();
+
   const geolocateControlStyle = {
     display: 'flex',
     alignItems: 'center',
@@ -30,36 +44,28 @@ function Map() {
     margin: 10
   }
 
-  // state
-  const [viewport, setViewport] = useState({
-    width: '100vw',
-    height: '100vh',
-    latitude: 48.857704,
-    longitude: 2.339466,
-    zoom: 11.5,
-    minZoom: 11,
-    maxZoom: 19
-  });
-
-  const [data, setData] = useState(null);
+  // data filters for querying api
   const [filters, setFilters] = useState({
-    price: {value: null, active: false},
-    terrace: {value: null, active: false},
-    endHour: {value: null, active: false},
-    endHappy: {value: null, active: false}
+    price: { value: null, active: false },
+    terrace: { value: null, active: false },
+    endHour: { value: null, active: false },
+    endHappy: { value: null, active: false }
   });
-  const [selectedBar, setSelectedBar] = useState(null);
-  const [isMenuOpen, setisMenuOpen] = useState(false);
-  const [activeContent, setActiveContent] = useState(null);
 
-  // effects
+  // load data (initially & on filters change)
+  const [data, setData] = useState(null);
+  const points = data ? data.features.map(feature => {
+    parseFloat(feature.geometry.coordinates[0])
+    parseFloat(feature.geometry.coordinates[1])
+    return feature
+  }) : []
+
   useEffect(() => {
-    if(Object.values(filters).every(filter => !filter.active)){
+    if (Object.values(filters).every(filter => !filter.active)) {
       getOpenBars().then(bars => {
         setData(bars)
       })
     } else {
-      console.log(filters)
       getFilteredBars(filters).then(bars => {
         setData(bars)
       })
@@ -67,48 +73,71 @@ function Map() {
 
   }, [filters]);
 
+  // get map bounds
+  const bounds = mapRef.current
+    ? mapRef.current
+      .getMap()
+      .getBounds()
+      .toArray()
+      .flat()
+    : null;
+
+  // get clusters
+  const { clusters, supercluster } = useSupercluster({
+    points,
+    bounds,
+    zoom: viewport.zoom,
+    options: { radius: 75, maxZoom: 20 }
+  });
+
+  // menu interaction
+  const [isMenuOpen, setisMenuOpen] = useState(false);
+  const [activeContent, setActiveContent] = useState(null);
+
+  const closeMenu = () => {
+    setisMenuOpen(false)
+  }
+
+  // bar selection 
+  const [selectedBar, setSelectedBar] = useState(null);
+
   const showBarInfos = (bar) => {
     setActiveContent('bar')
     setisMenuOpen(true)
     setSelectedBar(bar.properties)
   };
 
-  const closeMenu = () => {
-    setisMenuOpen(false)
-  }
-
   return (
     <section id="Map">
-      <FilterSelected/>
+      {/* <FilterSelected /> */}
       <MapGL
         {...viewport}
         onViewportChange={setViewport}
         mapboxApiAccessToken={MAPBOXTOKEN}
         mapStyle={mapStyle}
         onClick={closeMenu}
+        ref={mapRef}
       >
-        {data /* && viewport.zoom > 14 */ &&
-          <BarPins data={data.features} onClick={showBarInfos} selectedBar={selectedBar} />}
+        {clusters.map(cluster => {
+          const { cluster: isCluster } = cluster.properties;
 
-        {/* <Source
-          id="bars-clubs"
-          type="geojson"
-          data={data}
-          cluster={true}
-          clusterMaxZoom={13}
-          clusterRadius={50}
-        >
-          <Layer {...clusterCircleLayer} />
-        </Source> */}
+          // we have a cluster to render
+          if (isCluster) {
+            return <Cluster clusterData={cluster} key={`cluster-${cluster.id}`} />
+          }
 
-        <GeolocateControl
+          // we have a single point (bar) to render
+          return <BarPin key={cluster.properties.id} barData={cluster} showBarInfos={showBarInfos} selected={selectedBar ? selectedBar.id === cluster.properties.id : false} />
+        })}
+
+        {/* <GeolocateControl
           style={geolocateControlStyle}
           positionOptions={{ enableHighAccuracy: true }}
           trackUserLocation={true}
-        />
+        /> */}
       </MapGL>
 
-      <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters}/>
+      {/* <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters} /> */}
     </section>
   );
 }
