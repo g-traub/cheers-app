@@ -19,7 +19,7 @@ export default function Cluster(props) {
         //   height: `${pointCount}px`
         // }}
       >
-        {props.clusterData.properties.point_count}
+        {props.clusterData.properties.avg.toFixed(2)}&euro;
       </div>
     </Marker>
   )

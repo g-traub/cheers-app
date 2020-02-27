@@ -82,12 +82,25 @@ function Map() {
       .flat()
     : null;
 
+  // ({sum: props.myValue})
   // get clusters
   const { clusters, supercluster } = useSupercluster({
     points,
     bounds,
     zoom: viewport.zoom,
-    options: { radius: 75, maxZoom: 20 }
+    options: {
+      radius: 75,
+      maxZoom: 20,
+      map: (props) => ({
+        count: 1,
+        sum: parseFloat(props.priceNormal)
+      }),
+      reduce: (accumulated, props) => {
+        accumulated.count += props.count
+        accumulated.sum += props.sum;
+        accumulated.avg = accumulated.sum / accumulated.count;
+      }
+    },
   });
 
   // menu interaction
