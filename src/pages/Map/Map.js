@@ -3,7 +3,7 @@ import MapGL, { FlyToInterpolator, GeolocateControl } from 'react-map-gl';
 import useSupercluster from "use-supercluster";
 
 // services
-import { getOpenBars, getFilteredBars } from 'services/bars'
+import { getAllBars, getOpenBars, getFilteredBars } from 'services/bars'
 
 // components
 import Menu from 'components/Menu/Menu'
@@ -103,7 +103,6 @@ function Map() {
   });
 
   const zoomToCluster = (clusterId, latitude, longitude) => {
-    console.log('yes')
     const zoom = supercluster.getClusterExpansionZoom(clusterId)
     setViewport({ 
       ...viewport,

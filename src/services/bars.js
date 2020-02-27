@@ -2,6 +2,13 @@ import axios from 'axios';
 
 const apiUrl = 'https://cheeers-api.herokuapp.com/api'
 
+export async function getAllBars() {
+  const response = await axios(
+    `${apiUrl}/bars`,
+  );
+  return response.data
+}
+
 export async function getOpenBars() {
   const today = new Date()
   const currentTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
