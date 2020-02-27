@@ -9,20 +9,20 @@ export default function MenuContent(props) {
 
   const filtersContent = [
     {
-      name: 'Happyhour',
+      name: 'happyHour',
       title: 'Happy Hour',
       condition: 'Until',
       values: ['18h', '19h', '20h', '21h', '22h', '23h', '00h']
     },
     {
-      name: 'Beer',
+      name: 'price',
       title: 'Beer Price',
       condition: 'Less then',
       values: ['3€', '4€', '5€', '6€', '7€', '8€']
 
     },
     {
-      name: 'Time',
+      name: 'openHour',
       title: 'Openning Hours',
       condition: 'Until',
       values: ['22h', '23h', '00h', '01h', '02h', '03h', '04h', '05h']

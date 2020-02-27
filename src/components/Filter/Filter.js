@@ -8,7 +8,7 @@ import { ReactComponent as Happyhour } from 'assets/icons/Happyhour.svg'
 import { ReactComponent as Beer } from 'assets/icons/Beer.svg'
 import { ReactComponent as Time } from 'assets/icons/Time.svg'
 
-const icons = { Happyhour, Beer, Time }
+const icons = { happyHour: Happyhour, price: Beer, openHour: Time }
 
 function Filter(props) {
   // props
@@ -23,13 +23,13 @@ function Filter(props) {
   const filterBars = () => {
     setIsMenuOpen(false)
     switch (name) {
-      case 'Happyhour':
+      case 'happyHour':
         setFilters({...filters, happyHour: { value: `happyAfter=${value.slice(0, -1)}:00:00`, active: true }})
         break;
-      case 'Beer':
+      case 'price':
         setFilters({...filters, price: { value: `price=${value.slice(0, -1)}`, active: true }})
         break;
-      case 'Time':
+      case 'openHour':
           setFilters({...filters, openHour: { value: `openAfter=${value.slice(0, -1)}:00:00`, active: true }})
         break;
       default: return;
