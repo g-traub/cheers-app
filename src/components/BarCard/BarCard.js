@@ -8,11 +8,6 @@ function BarCard(props) {
   const { bar } = props
   const metros = bar.metro.split(',')
 
-  // @TODO
-  // const formatHours = hours => {
-
-  // }
-
   return (
     <section className="bar">
       <div className="bar__heading">

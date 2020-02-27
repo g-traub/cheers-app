@@ -50,7 +50,7 @@ function Menu(props) {
     <section id="Menu" className={isMenuOpen ? 'isOpen' : ''}>
       <div className="menu">
         {isMenuOpen && <div className="menu__content">
-          <MenuContent selectedBar={selectedBar} activeContent={activeContent} setisMenuOpen={setisMenuOpen} filters={filters} setFilters={setFilters} />
+          <MenuContent selectedBar={selectedBar} activeContent={activeContent} setActiveContent={setActiveContent} setisMenuOpen={setisMenuOpen} filters={filters} setFilters={setFilters} />
         </div>}
         <div className={isMenuOpen ? 'buttons buttons--bordered' : 'buttons'}>
           <div className={isAnyFilterActive ? 'buttonReset' : 'buttonReset--disabled buttonReset'} onClick={resetFilters}>Reset</div>

@@ -34,12 +34,14 @@
     margin: .3rem;
   }
   .filter__button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     cursor: pointer;
     margin: 1rem 0;
-    padding: 0.75rem 2.5rem;
+    height: 50px;
+    padding: 0 2rem;
     background: linear-gradient(85.49deg, #ffe082 0.96%, #ffc107 49.51%, #ffa000 98.44%), #ffe082;
-    border-radius: 10px;
+    border-radius: 20px;
     color: #fff;
   }
 }
