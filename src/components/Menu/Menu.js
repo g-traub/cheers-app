@@ -11,7 +11,7 @@ import { ReactComponent as Happy } from 'assets/icons/Happyhour.svg'
 import { ReactComponent as Terrace } from 'assets/icons/Terrace.svg'
 
 function Menu(props) {
-  const { isMenuOpen, setisMenuOpen, selectedBar, activeContent, setActiveContent, filters, setFilters } = props
+  const { selectedBar, activeContent, setActiveContent, filters, setFilters } = props
 
   const toggleFilter = (filterName) => () => {
     if (filterName === 'terrace') {
@@ -22,10 +22,8 @@ function Menu(props) {
       }
     } else if (activeContent === filterName){
       setActiveContent(null)
-      setisMenuOpen(false)
     } else {
       setActiveContent(filterName)
-      setisMenuOpen(true)
     }
   }
 
@@ -43,16 +41,17 @@ function Menu(props) {
         openHour: { value: null, active: false },
         happyHour: { value: null, active: false }
       })
+      setActiveContent(null)
     }
   }
 
   return (
-    <section id="Menu" className={isMenuOpen ? 'isOpen' : ''}>
+    <section id="Menu" className={activeContent ? 'isOpen' : ''}>
       <div className="menu">
-        {isMenuOpen && <div className="menu__content">
-          <MenuContent selectedBar={selectedBar} activeContent={activeContent} setActiveContent={setActiveContent} setisMenuOpen={setisMenuOpen} filters={filters} setFilters={setFilters} />
+        {activeContent && <div className="menu__content">
+          <MenuContent selectedBar={selectedBar} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters} />
         </div>}
-        <div className={isMenuOpen ? 'buttons buttons--bordered' : 'buttons'}>
+        <div className={activeContent ? 'buttons buttons--bordered' : 'buttons'}>
           <div className={isAnyFilterActive ? 'buttonReset' : 'buttonReset--disabled buttonReset'} onClick={resetFilters}>Reset</div>
           <div className="filterButtons">
             <div onClick={toggleFilter('openHour')} className={isfilterOpenOrActive('openHour') ? 'active filterButton' : 'filterButton'}>

@@ -143,19 +143,13 @@ function Map() {
   }
 
   // menu interaction
-  const [isMenuOpen, setisMenuOpen] = useState(false);
   const [activeContent, setActiveContent] = useState(null);
-
-  const closeMenu = () => {
-    setisMenuOpen(false)
-  }
-
+  
   // bar selection 
   const [selectedBar, setSelectedBar] = useState(null);
 
   const showBarInfos = (bar) => {
     setActiveContent('bar')
-    setisMenuOpen(true)
     setSelectedBar(bar.properties)
   };
 
@@ -166,7 +160,7 @@ function Map() {
         onViewportChange={newViewport => updateViewport(newViewport)}
         mapboxApiAccessToken={MAPBOXTOKEN}
         mapStyle={mapStyle}
-        onClick={closeMenu}
+        onClick={() => setActiveContent(null)}
         ref={mapRef}
       >
         {clusters.map(cluster => {
@@ -190,7 +184,7 @@ function Map() {
 
       {Object.values(filters).some(filter => filter.active) && <FilterSelected filters={filters} />}
       
-      <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters} />
+      <Menu selectedBar={selectedBar} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters} />
     </section>
   );
 }

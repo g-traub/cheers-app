@@ -5,7 +5,7 @@ import BarCard from 'components/BarCard/BarCard'
 import Filter from 'components/Filter/Filter';
 
 export default function MenuContent(props) {
-  const { activeContent, selectedBar, setisMenuOpen, filters, setFilters, setActiveContent } = props
+  const { activeContent, selectedBar, filters, setFilters, setActiveContent } = props
 
   const filtersContent = [
     {
@@ -35,7 +35,7 @@ export default function MenuContent(props) {
 
       {filtersContent.map(filterContent => {
         if (filterContent.name === activeContent) {
-          return <Filter name={filterContent.name} title={filterContent.title} condition={filterContent.condition} values={filterContent.values} key={filterContent.name} setIsMenuOpen={setisMenuOpen} filters={filters} setFilters={setFilters} setActiveContent={setActiveContent}/>
+          return <Filter name={filterContent.name} title={filterContent.title} condition={filterContent.condition} values={filterContent.values} key={filterContent.name} filters={filters} setFilters={setFilters} setActiveContent={setActiveContent}/>
         }
       })}
 
