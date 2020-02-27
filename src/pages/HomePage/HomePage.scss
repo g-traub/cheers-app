@@ -138,6 +138,7 @@
           background-color: $lightYellow;
           &:before {
             content: "€€€€";
+            color: $lightYellow;
             @extend %level;
           }
         }
@@ -145,6 +146,7 @@
           background-color: $yellow;
           &:before {
             content: "€€€";
+            color: $yellow;
             @extend %level;
           }
         }
@@ -152,6 +154,7 @@
           background-color: $lightOrange;
           &:before {
             content: "€€";
+            color: $lightOrange;
             @extend %level;
           }
         }
@@ -159,6 +162,7 @@
           background-color: $orange;
           &:before {
             content: "€";
+            color: $orange;
             @extend %level;
           }
         }
@@ -180,7 +184,7 @@
           &:before {
             content: "-";
             display: flex;
-            font-size: .8rem;
+            font-size: .9rem;
             font-weight: 700;
             color: $orange;
             align-items: center;
@@ -220,6 +224,7 @@
       display: block;
       border: 2px solid white;
       border-radius: 50%;
+      font-family: Ambit-Regular;
       &.level-4 {
         height: 100px;
         width: 100px;
