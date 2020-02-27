@@ -131,28 +131,28 @@
         border-radius: 50%;
         display: block;
         &.level-4 {
-          background-color: $orange;
+          background-color: $lightYellow;
           &:before {
             content: "€€€€";
             @extend %level;
           }
         }
         &.level-3 {
-          background-color: #FFC107;
+          background-color: $yellow;
           &:before {
             content: "€€€";
             @extend %level;
           }
         }
         &.level-2 {
-          background-color: #FFD451;
+          background-color: $lightOrange;
           &:before {
             content: "€€";
             @extend %level;
           }
         }
         &.level-1 {
-          background-color: #FFD451;
+          background-color: $orange;
           &:before {
             content: "€";
             @extend %level;
@@ -220,7 +220,7 @@
         height: 100px;
         width: 100px;
         top: 9%;
-        background-color: #FFE38D;
+        background-color: $orange;
         svg {
           position: absolute;
           transform: scaleX(-1);
@@ -228,7 +228,7 @@
           left: 112px;
         }
         &:before {
-          content: "Cheaper";
+          content: "Cheapest";
           position: absolute;
           top: 100px;
           left: 105px;
@@ -240,7 +240,7 @@
         width: 70px;
         top: 19%;
         right: 55%;
-        background-color: #FFD451;
+        background-color: $lightOrange;
         svg {
           position: absolute;
           top: 34px;
@@ -259,7 +259,7 @@
         width: 50px;
         right: 50%;
         top: 50%;
-        background-color: #FFA000;
+        background-color: $lightYellow;
         svg {
           position: absolute;
           transform: rotate(-61deg);
@@ -278,7 +278,7 @@
         width: 30px;
         top: 11%;
         right: 34%;
-        background-color: #FFC107;
+        background-color: $yellow;
         svg {
           transform: scaleX(-1) rotate(51deg);
           position: absolute;
