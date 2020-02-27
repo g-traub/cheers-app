@@ -10,7 +10,7 @@ import Menu from 'components/Menu/Menu'
 import FilterSelected from 'components/FilterSelected/FilterSelected'
 import BarPin from 'components/BarPin/BarPin'
 import Cluster from 'components/Cluster/Cluster'
-import PopupInfo from 'components/PopupInfo/PopupInfo'
+
 // styles
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './Map.scss'
@@ -189,7 +189,7 @@ function Map() {
       </MapGL>
 
       {Object.values(filters).some(filter => filter.active) && <FilterSelected filters={filters} />}
-      {/* <PopupInfo/> */}
+      
       <Menu isMenuOpen={isMenuOpen} selectedBar={selectedBar} setisMenuOpen={setisMenuOpen} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters} />
     </section>
   );
