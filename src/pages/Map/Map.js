@@ -10,6 +10,7 @@ import Menu from 'components/Menu/Menu'
 import FilterSelected from 'components/FilterSelected/FilterSelected'
 import BarPin from 'components/BarPin/BarPin'
 import Cluster from 'components/Cluster/Cluster'
+import InfoModal from 'components/InfoModal/InfoModal';
 
 // styles
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -71,12 +72,13 @@ function Map() {
   }
 
   // data filters for querying api
-  const [filters, setFilters] = useState({
+  const initialFilterState = {
     price: { value: null, active: false },
     terrace: { value: null, active: false },
     openAfter: { value: null, active: false },
     happyAfter: { value: null, active: false }
-  });
+  }
+  const [filters, setFilters] = useState(initialFilterState);
 
   // load data (initially & on filters change)
   const [data, setData] = useState(null);
@@ -144,7 +146,7 @@ function Map() {
 
   // menu interaction
   const [activeContent, setActiveContent] = useState(null);
-  
+
   // bar selection 
   const [selectedBar, setSelectedBar] = useState(null);
 
@@ -183,8 +185,13 @@ function Map() {
       </MapGL>
 
       {Object.values(filters).some(filter => filter.active) && <FilterSelected filters={filters} />}
-      
+
       <Menu selectedBar={selectedBar} activeContent={activeContent} setActiveContent={setActiveContent} filters={filters} setFilters={setFilters} />
+      
+      {data && data.features.length === 0 && <InfoModal buttonText="Ok" dismissModal={() => setFilters(initialFilterState)}>
+        <p>No bar meets these criterias...</p>
+        <p>Try again !</p>
+      </InfoModal>}
     </section>
   );
 }

@@ -58,7 +58,7 @@ function Filter(props) {
       <Picker label={condition} values={values} value={value} unit={unit} filterValue={filters[name].value} handleChange={(newValue) => value = newValue} />
       <div className="filter__footer">
         {filters[name].active && <Undo width="25" className="undo" onClick={resetFilter} />}
-        <div onClick={filterBars} className="filter__button">Ok</div>
+        <div onClick={filterBars} className="button__ok">Ok</div>
       </div>
     </div>
   )
