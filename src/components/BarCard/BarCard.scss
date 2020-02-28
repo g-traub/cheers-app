@@ -4,7 +4,8 @@
 .bar {
   margin: 0 1.5rem;
   hr {
-    color: rgba(0,0,0,.075);
+    border: none;
+    border-top: 1px solid rgba(0,0,0,.075);
   }
 }
 .bar__heading {

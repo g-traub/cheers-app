@@ -13,13 +13,13 @@ function BarCard(props) {
       <div className="bar__heading">
         <h2 className="bar__name">{bar.name}</h2>
         {/* @TODO : rating */}
-        <ol className="bar__rating">
+        {/* <ol className="bar__rating">
           <li className="rating"></li>
           <li className="rating"></li>
           <li className="rating"></li>
           <li className="rating rating--halfEmpty"></li>
           <li className="rating rating--empty"></li>
-        </ol>
+        </ol> */}
       </div>
 
       <h3 className="bar__address">

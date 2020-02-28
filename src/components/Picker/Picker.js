@@ -6,31 +6,33 @@ const _debounce = require('lodash/debounce');
 
 export default function Picker(props) {
   const isIntersecting = (target, root) => {
-    const {right, left} = root.getBoundingClientRect()
-    const targetRect = target.getBoundingClientRect()
-    if (targetRect.right - targetRect.right * 0.1 < right && targetRect.left + targetRect.left * 0.1 > left) {
-      props.handleChange(target.attributes.value.value)
+    if (root && target) {
+      const { right, left } = root.getBoundingClientRect()
+      const targetRect = target.getBoundingClientRect()
+      if (targetRect.right - targetRect.right * 0.1 < right && targetRect.left + targetRect.left * 0.1 > left) {
+        props.handleChange(target.attributes.value.value)
+      }
     }
   }
-  
+
   const handleScroll = event => {
     const eventTarget = event.target
-      for (let childNode of eventTarget.childNodes) {
-        _debounce(() => isIntersecting(childNode, selectorRef.current), 100)()
-      }
+    for (let childNode of eventTarget.childNodes) {
+      _debounce(() => isIntersecting(childNode, selectorRef.current), 100)()
+    }
   }
-  
+
   // data
   const selectorRef = useRef(null);
   const values = props.values.map((value, index) => {
     return (
-      <PickerValue value={value} unit={props.unit} rootRef={selectorRef.current} selected={value === props.value} filterSelected={value === props.filterValue} key={index}/>
+      <PickerValue value={value} unit={props.unit} rootRef={selectorRef.current} selected={value === props.value} filterSelected={value === props.filterValue} key={index} />
     )
   });
-  
+
   // state
   const [dimensions, setDimensions] = useState({});
-  
+
   //hooks
   useLayoutEffect(() => {
     setDimensions({ height: '35px', width: '50px' });
@@ -56,7 +58,7 @@ function PickerValue(props) {
   }
 
   useLayoutEffect(() => {
-    if(props.selected) scrollTo(ref.current, 'instant')
+    if (props.selected) scrollTo(ref.current, 'instant')
   }, []);
 
   return (

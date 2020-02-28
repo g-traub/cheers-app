@@ -21,6 +21,10 @@
     align-items: center;
     justify-content: center;
     display: flex;
+    p {
+      text-align: center;
+      margin: .3rem;
+    }
   }
   .button__ok {
     margin-top: 1rem;

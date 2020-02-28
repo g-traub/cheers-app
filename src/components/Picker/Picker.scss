@@ -65,6 +65,7 @@
     padding: 0.25rem 0.95rem;
     margin: 0;
     scroll-snap-align: center;
+    user-select: none;
   }
   .picker__value--selected {
     color: $orange;
