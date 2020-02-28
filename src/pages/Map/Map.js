@@ -174,7 +174,7 @@ function Map() {
           }
 
           // we have a single point (bar) to render
-          return <BarPin key={cluster.properties.id} barData={cluster} showBarInfos={showBarInfos} selected={selectedBar ? selectedBar.id === cluster.properties.id : false} />
+          return <BarPin key={cluster.properties.id} barData={cluster} showBarInfos={showBarInfos} selected={selectedBar ? selectedBar.id === cluster.properties.id && activeContent === 'bar' : false} />
         })}
 
         <GeolocateControl
