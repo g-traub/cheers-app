@@ -38,8 +38,8 @@ function Menu(props) {
       setFilters({
         price: { value: null, active: false },
         terrace: { value: null, active: false },
-        openHour: { value: null, active: false },
-        happyHour: { value: null, active: false }
+        openAfter: { value: null, active: false },
+        happyAfter: { value: null, active: false }
       })
       setActiveContent(null)
     }
@@ -54,10 +54,10 @@ function Menu(props) {
         <div className={activeContent ? 'buttons buttons--bordered' : 'buttons'}>
           <div className={isAnyFilterActive ? 'buttonReset' : 'buttonReset--disabled buttonReset'} onClick={resetFilters}>Reset</div>
           <div className="filterButtons">
-            <div onClick={toggleFilter('openHour')} className={isfilterOpenOrActive('openHour') ? 'active filterButton' : 'filterButton'}>
+            <div onClick={toggleFilter('openAfter')} className={isfilterOpenOrActive('openAfter') ? 'active filterButton' : 'filterButton'}>
               <Time height="30" width="30" />
             </div>
-            <div onClick={toggleFilter('happyHour')} className={isfilterOpenOrActive('happyHour') ? 'active filterButton' : 'filterButton'}>
+            <div onClick={toggleFilter('happyAfter')} className={isfilterOpenOrActive('happyAfter') ? 'active filterButton' : 'filterButton'}>
               <Happy height="32" width="32" />
             </div>
             <div onClick={toggleFilter('price')} className={isfilterOpenOrActive('price') ? 'active filterButton' : 'filterButton'}>

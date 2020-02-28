@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 //components
 import Picker from 'components/Picker/Picker'
 //style 
@@ -8,30 +8,31 @@ import { ReactComponent as Happyhour } from 'assets/icons/Happyhour.svg'
 import { ReactComponent as Beer } from 'assets/icons/Beer.svg'
 import { ReactComponent as Time } from 'assets/icons/Time.svg'
 
-const icons = { happyHour: Happyhour, price: Beer, openHour: Time }
+const icons = { happyAfter: Happyhour, price: Beer, openAfter: Time }
 
 function Filter(props) {
   // props
-  const { name, title, condition, values, filters, setFilters, setActiveContent } = props
+  const {filters, setFilters, setActiveContent } = props
+  const { name, title, condition, values, unit } = props.filterContent
 
-  // @TODO : local value get last sent value else get this one 
-  const [value, setValue] = useState(values[Math.round(values.length / 2)]);
-  const handleChange = newValue => {
-    setValue(newValue)
+  const getInitialValue = () => {
+    return filters[name].value || values[Math.round(values.length / 2)];
   }
+
+  let value = getInitialValue()
   
   const filterBars = () => {
     setActiveContent(null)
     
     switch (name) {
-      case 'happyHour':
-        setFilters({...filters, happyHour: { value: `happyAfter=${value.slice(0, -1)}:00:00`, active: true }})
+      case 'happyAfter':
+        setFilters({...filters, happyAfter: { value, formattedValue: `${value}:00:00`, active: true }})
         break;
       case 'price':
-        setFilters({...filters, price: { value: `price=${value.slice(0, -1)}`, active: true }})
+        setFilters({...filters, price: { value, active: true }})
         break;
-      case 'openHour':
-          setFilters({...filters, openHour: { value: `openAfter=${value.slice(0, -1)}:00:00`, active: true }})
+      case 'openAfter':
+          setFilters({...filters, openAfter: { value, formattedValue: `${value}:00:00`, active: true }})
         break;
       default: return;
     }
@@ -48,7 +49,7 @@ function Filter(props) {
         </div>
         <div className="filter__name">{title}</div>
       </div>
-      <Picker label={condition} values={values} value={value} handleChange={handleChange} />
+      <Picker label={condition} values={values} value={value} unit={unit} handleChange={(newValue) => value = newValue} />
       <div onClick={filterBars} className="filter__button">Ok</div>
     </div>
   )

@@ -9,7 +9,7 @@ export default function Picker(props) {
     const {right, left} = root.getBoundingClientRect()
     const targetRect = target.getBoundingClientRect()
     if (targetRect.right - targetRect.right * 0.1 < right && targetRect.left + targetRect.left * 0.1 > left) {
-      props.handleChange(target.textContent)
+      props.handleChange(target.attributes.value.value)
     }
   }
   
@@ -24,7 +24,7 @@ export default function Picker(props) {
   const selectorRef = useRef(null);
   const values = props.values.map((value, index) => {
     return (
-      <PickerValue value={value} rootRef={selectorRef.current} selected={value === props.value} key={index} />
+      <PickerValue value={value} unit={props.unit} rootRef={selectorRef.current} selected={value === props.value} key={index}/>
     )
   });
   
@@ -60,6 +60,6 @@ function PickerValue(props) {
   }, []);
 
   return (
-    <li ref={ref} onClick={() => scrollTo(ref.current, 'smooth')} className="picker__value">{props.value}</li>
+    <li ref={ref} onClick={() => scrollTo(ref.current, 'smooth')} className="picker__value" value={props.value}>{props.value}{props.unit}</li>
   )
 }

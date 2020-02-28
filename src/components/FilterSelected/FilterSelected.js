@@ -9,26 +9,22 @@ import { ReactComponent as Terrace } from 'assets/icons/Terrace.svg'
 import { ReactComponent as Check } from 'assets/icons/check.svg'
 
 function FilterSelected(props) {
-  const { happyHour, openHour, price, terrace } = props.filters
-  
-  const extractFilterValue = value => {
-    return value.match(/[0-9]{1,2}/)
-  }
+  const { happyAfter, openAfter, price, terrace } = props.filters
 
   return (
     <div id="FilterSelected">
       <div className="filter__selected-container">
-        {openHour.active && <div className="filter__selected-icon">
+        {openAfter.active && <div className="filter__selected-icon">
           <Time height="20" />
-          <div>{extractFilterValue(openHour.value)}h</div>
+          <div>{openAfter.value}h</div>
         </div>}
-        {happyHour.active && <div className="filter__selected-icon happy-icon">
+        {happyAfter.active && <div className="filter__selected-icon happy-icon">
           <Happyhour height="20" />
-          <div>{extractFilterValue(happyHour.value)}h</div>
+          <div>{happyAfter.value}h</div>
         </div>}
         {price.active && <div className="filter__selected-icon">
           <Beer height="20" />
-          <div>{extractFilterValue(price.value)}&euro;</div>
+          <div>{price.value}&euro;</div>
         </div>}
         {terrace.active && <div className="filter__selected-icon">
           <Terrace height="20" />

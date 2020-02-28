@@ -22,12 +22,12 @@ export async function getOpenBars() {
 export async function getFilteredBars(filters) {
   let url = `${apiUrl}/bars/search`
   
-  const paramsString = Object.values(filters).reduce((acc, filter) => {
-    if (filter.active) {
+  const paramsString = Object.keys(filters).reduce((acc, key) => {
+    if (filters[key].active) {
       if (acc.length > 0){
         acc += "&"
       }
-      acc += filter.value
+      acc += `${key}=${filters[key].formattedValue || filters[key].value}`
     }  
     return acc
   }, "")

@@ -9,23 +9,26 @@ export default function MenuContent(props) {
 
   const filtersContent = [
     {
-      name: 'happyHour',
+      name: 'happyAfter',
       title: 'Happy Hour',
-      condition: 'Until',
-      values: ['18h', '19h', '20h', '21h', '22h', '23h', '00h']
+      condition: 'After',
+      values: ['18', '19', '20', '21', '22', '23', '00'],
+      unit: 'h'
     },
     {
       name: 'price',
       title: 'Beer Price',
       condition: 'Less then',
-      values: ['3€', '4€', '5€', '6€', '7€', '8€']
+      values: ['3', '4', '5', '6', '7', '8'],
+      unit: '€'
 
     },
     {
-      name: 'openHour',
-      title: 'Openning Hours',
-      condition: 'Until',
-      values: ['22h', '23h', '00h', '01h', '02h', '03h', '04h', '05h']
+      name: 'openAfter',
+      title: 'Open',
+      condition: 'After',
+      values: ['22', '23', '00', '01', '02', '03', '04', '05'],
+      unit: 'h'
     }
   ]
 
@@ -35,7 +38,7 @@ export default function MenuContent(props) {
 
       {filtersContent.map(filterContent => {
         if (filterContent.name === activeContent) {
-          return <Filter name={filterContent.name} title={filterContent.title} condition={filterContent.condition} values={filterContent.values} key={filterContent.name} filters={filters} setFilters={setFilters} setActiveContent={setActiveContent}/>
+          return <Filter filterContent={filterContent} key={filterContent.name} filters={filters} setFilters={setFilters} setActiveContent={setActiveContent}/>
         }
       })}
 

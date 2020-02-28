@@ -74,8 +74,8 @@ function Map() {
   const [filters, setFilters] = useState({
     price: { value: null, active: false },
     terrace: { value: null, active: false },
-    openHour: { value: null, active: false },
-    happyHour: { value: null, active: false }
+    openAfter: { value: null, active: false },
+    happyAfter: { value: null, active: false }
   });
 
   // load data (initially & on filters change)
