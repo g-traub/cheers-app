@@ -24,7 +24,7 @@ export default function Picker(props) {
   const selectorRef = useRef(null);
   const values = props.values.map((value, index) => {
     return (
-      <PickerValue value={value} unit={props.unit} rootRef={selectorRef.current} selected={value === props.value} key={index}/>
+      <PickerValue value={value} unit={props.unit} rootRef={selectorRef.current} selected={value === props.value} filterSelected={value === props.filterValue} key={index}/>
     )
   });
   
@@ -60,6 +60,6 @@ function PickerValue(props) {
   }, []);
 
   return (
-    <li ref={ref} onClick={() => scrollTo(ref.current, 'smooth')} className="picker__value" value={props.value}>{props.value}{props.unit}</li>
+    <li ref={ref} onClick={() => scrollTo(ref.current, 'smooth')} className={props.filterSelected ? 'picker__value picker__value--selected' : 'picker__value'} value={props.value}>{props.value}{props.unit}</li>
   )
 }

@@ -66,6 +66,9 @@
     margin: 0;
     scroll-snap-align: center;
   }
+  .picker__value--selected {
+    color: $orange;
+  }
   .picker__selector {
     margin: 0 auto;
     border: 1px solid $orange;
