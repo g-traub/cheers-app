@@ -1,10 +1,10 @@
-@import 'styles/colors.scss';
-@import 'styles/fontface.scss';
+@import "styles/colors.scss";
+@import "styles/fontface.scss";
 
 /*PlaceHolders*/
 %level {
   display: block;
-  font-size: .8rem;
+  font-size: 0.8rem;
   margin-left: 25px;
   width: 50px;
   color: $orange;
@@ -15,18 +15,26 @@
 .Home {
   background-color: #fff;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   color: #000;
   .home__container {
     width: 90%;
+    max-width: 750px;
     margin: 3vh auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   p {
-    font-family: Ambit-Regular;
-    margin: .5rem 0;
+    font-family: Ambit-Light;
+    line-height: 1.3;
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+  }
+  hr {
+  border: none;
+  border-top: 1px solid $lightGrey !important;
+  margin: 2rem;
+  width: 100%;
   }
 }
 
@@ -37,57 +45,22 @@
 }
 
 .btn-start {
-  display: flex;
-  justify-content: center;
-    a {
-      color: white;
-      font-family: Shrikhand-Regular;
-      z-index: 1;
-      background: linear-gradient(138.05deg, #FFE082 24%, #FFC107 36.51%, #FFA000 66.44%), #FFE082;
-      height: 10vh;
-      display: flex;
-      width: 10vh;
-      text-decoration: none;
-      border-radius: 50%;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      font-size: 1.3rem;
-      &:before{
-        content: "";
-        z-index: -1;
-        background: linear-gradient(106.05deg, #FFE082 0.96%, #FFC107 49.51%, #FFA000 98.44%), #FFE082;
-        position: absolute;
-        display: block;
-        height: 7vh;
-        width: 7vh;
-        border-radius: 50%;
-        left: -27px;
-        bottom: 1px;
-      }
-      &:after{
-        content: "";
-        z-index: -1;
-        background-color: $orange;
-        position: absolute;
-        display: block;
-        height: 6vh;
-        width: 6vh;
-        border-radius: 50%;
-        left: 43px;
-        bottom: 5px;
-      }
-    }
+  margin: auto;
+  a {
+    font-family: Ambit-Regular;
+    color: #fff;
+    font-size: 1.3rem;
+    text-decoration: none;
+  }
 }
-
 .t-center {
   text-align: center;
 }
 
 .home__title {
-  font-family: Ambit-SemiBold;
+  font-family: Ambit-Regular;
   font-size: 1.2rem;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
 
 .howis__desc {
@@ -99,7 +72,7 @@
 .howis__boutons {
   display: flex;
   justify-content: space-evenly;
-  margin: 2rem 0;
+  margin-top: 2rem;
   .filter__icon {
     display: flex;
     align-items: center;
@@ -118,7 +91,6 @@
     fill: white;
   }
 }
-
 
 .howtoroad__container {
   width: 100%;
@@ -166,7 +138,7 @@
             @extend %level;
           }
         }
-     }
+      }
     }
     .howtoroad__legend-bar {
       .howtoroad__legend-bar-points {
@@ -175,16 +147,16 @@
         align-items: center;
       }
       .point-icon {
-        border: grey 1px solid;
+        border: $grey 1px solid;
         border-radius: 50%;
         margin: 0 5px;
-        &.point-less  {
+        &.point-less {
           width: 20px;
           height: 20px;
           &:before {
             content: "-";
             display: flex;
-            font-size: .9rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: $orange;
             align-items: center;
@@ -192,11 +164,11 @@
             height: 100%;
           }
         }
-        &.point-neutral  {
+        &.point-neutral {
           width: 30px;
           height: 30px;
         }
-        &.point-more  {
+        &.point-more {
           width: 50px;
           height: 50px;
           &:before {
@@ -224,7 +196,7 @@
       display: block;
       border: 2px solid white;
       border-radius: 50%;
-      font-family: Ambit-Regular;
+      font-family: Ambit-Light;
       &.level-4 {
         height: 100px;
         width: 100px;
@@ -304,4 +276,3 @@
     }
   }
 }
-

@@ -53,8 +53,7 @@ function App() {
                 <div className="point-icon level-1"><Arrow height="30" /></div>
             </div>
         </div>
-        <hr/>
-        <div className="btn-start">
+        <div className="btn-start button__ok">
             <Link to="/map">Start</Link>
         </div>
         </div>
